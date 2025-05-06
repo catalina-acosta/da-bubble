@@ -1,28 +1,68 @@
 header {
-    width: 100%;
-    display: flex;
-    justify-content: center; 
-  }
-  
-  .header-container {
-    width: 100%;
-    max-width: 1440px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;  
-    padding: 0 20px;
-  }
-  
-  .avatar_content{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
-  .avatar_img{
-    background-color: aquamarine;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 2rem;
+.header-container {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
 
+  .logo {
+    width: 10rem;
   }
+}
+
+//SEACH
+
+.search_content{
+width: 35rem;
+
+input{
+    width: 100%;
+    border-radius: 20rem;
+    padding: 0.5rem 1.5rem;
+    border-style: none;
+    background-color: #fff;
+}
+img{
+    position:absolute;
+    top: 8px;
+    right: 19px;
+    width: 1.2rem;
+    background-color: #fff;
+}
+}
+
+// Profil Content
+.avatar_content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.avatar_img {
+  background-color: aquamarine;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 2rem;
+}
+
+.avatar_name {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.drop_nav_content {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 1.5rem;
+  }
+}
