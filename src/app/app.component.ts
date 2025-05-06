@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "./shared/component/header/header.component";
+import { FirebaseService } from './shared/services/firebase.service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +10,5 @@ import { HeaderComponent } from "./shared/component/header/header.component";
 })
 export class AppComponent {
   title = 'dabubble';
+  firebase = inject(FirebaseService);
 }
