@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+$purple: #444DF2;
+$lightpurple:  #eceefe;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    position: relative;
+    text-decoration: none;
+    background-color: $lightpurple;
+    font-family: 'Nunito'; 
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../public/assets/fonts/Nunito/Nunito-VariableFont_wght.ttf');
+}
