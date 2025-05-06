@@ -11,14 +11,17 @@
         [(ngModel)]="searchTerm"
       />
 
-      <img src="./assets/icon/search.svg" alt="search" />
+      <img class="search_icon" src="./assets/icon/search.svg" alt="search" />
 
       @if(showDropdown){
       <div class="dropdown">
         <ul>
           <li
             *ngFor="let person of filteredPersons" (click)="selectPerson(person)">
-            {{ person.name }}
+            <div class="dropdown-item">
+            <img src="./{{ person.avatar }}" alt="avatar">
+            {{ person.fullname }}
+            </div>
           </li>
         </ul>
       </div>

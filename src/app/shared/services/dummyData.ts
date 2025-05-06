@@ -96,10 +96,10 @@ export const users = [
         privateMessages: []
     },
     {
-        fullname: 'Mia Hoffmann',
-        name: 'Mia',
+        fullname: 'Steffen Hoffmann',
+        name: 'Steffen',
         lastname: 'Hoffmann',
-        email: 'mia.hoffmann@example.com',
+        email: 'steffen.hoffmann@example.com',
         avatar: 'assets/avatars/Avatar6.svg',
         status: true,
         privateMessages: [

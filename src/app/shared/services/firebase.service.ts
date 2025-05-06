@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { users } from './dummyData'
-import { collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
+import { collection, doc, Firestore, getDocs, setDoc } from '@angular/fire/firestore';
+import { UserInterface } from '../user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class FirebaseService {
   dummyData = users;
   firebase = inject(Firestore);
 
+  allUsers: UserInterface[] = []; 
   constructor() { 
     // this.initializeUsers();
   }
@@ -34,4 +36,32 @@ export class FirebaseService {
       }
     }
   // #endregion
+  async getUsers(): Promise<UserInterface[]> {
+    try {
+      const usersRef = collection(this.firebase, "users");
+      const usersSnapshot = await getDocs(usersRef);
+      const usersList: UserInterface[] = [];
+      
+      usersSnapshot.forEach(doc => {
+        const data = doc.data() as UserInterface; // <-- Typecast hinzufügen
+        usersList.push({
+          id: doc.id,
+          fullname: data.fullname,
+          name: data.name,
+          lastname: data.lastname,
+          email: data.email,
+          avatar: data.avatar,
+          status: data.status,
+          privateMessages: data.privateMessages,
+        });
+      });
+      
+      
+      return usersList;
+    } catch (error) {
+      console.error("Error fetching users: ", error);
+      return [];
+    }
+  }
+
 }

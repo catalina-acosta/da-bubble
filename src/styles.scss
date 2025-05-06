@@ -8,8 +8,11 @@ $lightpurple:  #eceefe;
     scroll-behavior: smooth;
     position: relative;
     text-decoration: none;
-    background-color: $lightpurple;
     font-family: 'Nunito'; 
+}
+
+body{
+    background-color: $lightpurple;
 }
 
 @font-face {
