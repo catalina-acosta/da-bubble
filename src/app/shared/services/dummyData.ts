@@ -8,7 +8,7 @@ export const users = [
         status: true,
         privateMessages: [
             {
-                userId: '',
+                userId: 'TeXHAm8UEVJaKcpKEvnR',
                 messages: [
                     {
                         text: 'Hallo Anna, hast du die Präsentation für das Meeting vorbereitet?',
@@ -40,7 +40,7 @@ export const users = [
         status: true,
         privateMessages: [
             {
-                userId: '',
+                userId: 'gMlJPp9ndRwYQvN0J3aP',
                 messages: [
                     {
                         text: 'Max, kannst du mir bitte die neuesten Zahlen schicken?',
@@ -72,7 +72,7 @@ export const users = [
         status: true,
         privateMessages: [
             {
-                userId: '',
+                userId: 'gMlJPp9ndRwYQvN0J3aP',
                 messages: [
                     {
                         text: 'Können wir das Design für die neue Seite morgen besprechen?',
@@ -104,7 +104,7 @@ export const users = [
         status: true,
         privateMessages: [
             {
-                userId: '',
+                userId: 'tG693f5shSIqSJLWtkRT',
                 messages: [
                     {
                         text: 'Ich habe die Änderungen im Dokument vorgenommen.',
