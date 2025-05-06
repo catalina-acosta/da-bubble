@@ -12,7 +12,7 @@ export class FirebaseService {
   constructor() { }
 
     // #region vorlage 
-    async users() {
+    async initializeUsers() {
       try {
         const usersRef = collection(this.firebase, "users");
         this.dummyData.forEach(async (element) => {
