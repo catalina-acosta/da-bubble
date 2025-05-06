@@ -1,7 +1,18 @@
+$purple: #444DF2;
+$lightpurple:  #eceefe;
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    background-color: #eceefe;
+    position: relative;
+    text-decoration: none;
+    background-color: $lightpurple;
+    font-family: 'Nunito'; 
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../public/assets/fonts/Nunito/Nunito-VariableFont_wght.ttf');
 }
