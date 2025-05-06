@@ -9,7 +9,9 @@ export class FirebaseService {
   dummyData = users;
   firebase = inject(Firestore);
 
-  constructor() { }
+  constructor() { 
+    // this.initializeUsers();
+  }
 
     // #region vorlage 
     async initializeUsers() {
