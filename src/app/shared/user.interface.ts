@@ -14,8 +14,10 @@ export interface UserInterface {
                     text: string,
                     date: string,
                     time: number,
-                    emoji: [
-                        string, number
+                    reactions: [{
+                        emoji: string, 
+                        counter: number
+                    }
                     ]
                 }
             ]
