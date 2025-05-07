@@ -13,6 +13,7 @@ export class FirebaseService {
   allUsers: UserInterface[] = []; 
   constructor() { 
     // this.initializeUsers();
+    // console.log("initializing users");
   }
 
     // #region vorlage 
@@ -27,7 +28,6 @@ export class FirebaseService {
             lastname: element.lastname,
             avatar: element.avatar,
             status: element.status,
-            privateMessages: element.privateMessages,
           });
         })
         console.log('Contact initialized successfully');
@@ -52,7 +52,6 @@ export class FirebaseService {
           email: data.email,
           avatar: data.avatar,
           status: data.status,
-          privateMessages: data.privateMessages,
         });
       });
       
