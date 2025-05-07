@@ -1,1 +1,10 @@
-<p>privatmessages works!</p>
+<section>
+    <p>privatmessages works!</p>
+    @for (message of firebase.allMessages; track $index) {
+        @if(message.senderId == currentUserId || message.receiverId == currentUserId ) {
+            @if (message.receiverId == currentConversationPartner || message.senderId == currentConversationPartner) {
+                <p>{{message.text}}</p>
+            }
+        }
+    }
+</section>

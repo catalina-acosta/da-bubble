@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FirebaseService } from '../../shared/services/firebase.service';
 
 @Component({
   selector: 'app-privatmessages',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './privatmessages.component.scss'
 })
 export class PrivatmessagesComponent {
+  firebase = inject(FirebaseService);
+  currentUserId: string = '74izbWVB9XFaPrkOl2IW';
+  currentConversationPartner: string = 'NsJ0o0lAuQVfQ7r28lRr';
+
 
 }
