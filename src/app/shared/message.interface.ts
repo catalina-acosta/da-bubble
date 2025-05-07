@@ -1,4 +1,5 @@
 export interface MessageInterface {
+    id?: string;
     senderId: string;
     receiverId: string;
     channelId?: string;
