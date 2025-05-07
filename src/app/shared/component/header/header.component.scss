@@ -39,8 +39,6 @@ input{
 }
 }
 // /dropdown inputfield
-
-
 .dropdown {
     position: absolute;
     top: 25px;
@@ -81,6 +79,18 @@ input{
     display: flex;
     align-items: center;
     gap: 1rem;
+  }
+
+  .status_btn{
+    position: absolute;
+    top: 1.7rem;
+    left: 2.3rem;
+    z-index: 1;
+    // background-color: rgb(98, 182, 81);
+    width: 1rem;
+    height: 1rem;
+    border: 3px solid rgb(255 255 255);
+    border-radius: 2rem;
   }
 
 // Profil Content
