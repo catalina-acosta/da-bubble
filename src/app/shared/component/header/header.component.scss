@@ -19,9 +19,9 @@ header {
 }
 
 //SEACH
-
 .search_content{
 width: 35rem;
+position: relative;
 
 input{
     width: 100%;
@@ -30,7 +30,7 @@ input{
     border-style: none;
     background-color: #fff;
 }
-img{
+.search_icon{
     position:absolute;
     top: 8px;
     right: 19px;
@@ -38,6 +38,50 @@ img{
     background-color: #fff;
 }
 }
+// /dropdown inputfield
+
+
+.dropdown {
+    position: absolute;
+    top: 25px;
+    left: 23px;
+    border: 1px solid #5a53802f;
+    width: 20rem;
+    box-shadow: 0 4px 6px rgba(71, 71, 71, 0.075);
+    z-index: 9999;
+    box-sizing: content-box;
+    overflow: hidden;   
+    border-radius: 0 20px 20px 20px;
+    background-color: #fff;
+  }
+  
+  .dropdown ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdown li {
+    padding: 10px 30px;
+    cursor: pointer;
+    background-color: #fff;
+    height: 3.8rem;
+    display: flex
+;
+    align-items: center;
+  }
+  
+  .dropdown li:hover {
+    background-color: #0c54970e;
+    border-radius: 20px;
+  }
+
+  .dropdown-item{
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 
 // Profil Content
 .avatar_content {

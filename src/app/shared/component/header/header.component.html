@@ -1,16 +1,39 @@
 <header>
-    <div class="header-container">
-      <img class="logo" src="./assets/icon/Logo.svg" alt="LOGO">
+  <div class="header-container">
+    <img class="logo" src="./assets/icon/Logo.svg" alt="LOGO" />
 
-      <div class="search_content">
-        <input type="text" placeholder="Devspace durchsuchen">
-        <img src="./assets/icon/search.svg" alt="search">
+    <div class="search_content">
+      <input
+        type="text"
+        placeholder="Devspace durchsuchen"
+        (input)="onInputChange($event)"
+        (focus)="onInputFocus()"
+        [(ngModel)]="searchTerm"
+      />
+
+      <img class="search_icon" src="./assets/icon/search.svg" alt="search" />
+
+      @if(showDropdown){
+      <div class="dropdown">
+        <ul>
+          <li
+            *ngFor="let person of filteredPersons" (click)="selectPerson(person)">
+            <div class="dropdown-item">
+            <img src="./{{ person.avatar }}" alt="avatar">
+            {{ person.fullname }}
+            </div>
+          </li>
+        </ul>
       </div>
+      }
+    </div>
 
-      <div class="avatar_content">
-        <p class="avatar_name">Caryen Song</p>
-        <div class="avatar_img"></div>
-        <div class="drop_nav_content"><img src="./assets/icon/keyboard_arrow_down.png" alt=""></div>
+    <div class="avatar_content">
+      <p class="avatar_name">Caryen Song</p>
+      <div class="avatar_img"></div>
+      <div class="drop_nav_content">
+        <img src="./assets/icon/keyboard_arrow_down.png" alt="" />
       </div>
     </div>
-  </header>
+  </div>
+</header>
