@@ -1,0 +1,19 @@
+section {
+    display: flex;
+    width: 100%;
+    max-width: 1440px;
+    height: 80vh;
+    justify-content: center;
+}
+
+app-devspace {
+    width: 20%;
+}
+
+app-privatmessages {
+    width: 60%;
+}
+
+app-thread {
+    width: 20%;
+}

@@ -13,12 +13,14 @@ export class FirebaseService {
   firebase = inject(Firestore);
   allUsers: UserInterface[] = []; 
   allMessages: MessageInterface[] = [];
+  allUsersList: UserInterface[] = []; 
 
   constructor() { 
     // this.initializeUsers();
     // console.log("initializing users");
     // this.initializeMessages();
     this.getMessages();
+    this.getUserList();
   }
 
     // #region vorlage 
@@ -105,6 +107,32 @@ export class FirebaseService {
           date: data.date,
           time: data.time,
           reactions: data.reactions,
+        });
+      });
+      console.log(this.allMessages);
+      
+      // return messagesList;
+    } catch (error) {
+      console.error("Error fetching messages: ", error);
+      // return [];
+    }
+  }
+
+  async getUserList() {
+    try {
+      const usersRef = collection(this.firebase, "users");
+      const usersSnapshot = await getDocs(usersRef);
+
+      usersSnapshot.forEach(doc => {
+        const data = doc.data() as UserInterface; // <-- Typecast hinzufügen
+        this.allUsersList.push({
+          id: doc.id,
+          fullname: data.fullname,
+          name: data.name,
+          lastname: data.lastname,
+          email: data.email,
+          avatar: data.avatar,
+          status: data.status,
         });
       });
       console.log(this.allMessages);

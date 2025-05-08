@@ -11,6 +11,5 @@ export class PrivatmessagesComponent {
   firebase = inject(FirebaseService);
   currentUserId: string = '74izbWVB9XFaPrkOl2IW';
   currentConversationPartner: string = 'NsJ0o0lAuQVfQ7r28lRr';
-
-
+  currentChannel: string = 'testChannel';
 }
