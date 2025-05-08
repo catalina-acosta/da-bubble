@@ -19,6 +19,7 @@
           <li
             *ngFor="let person of filteredPersons" (click)="selectPerson(person)">
             <div class="dropdown-item">
+              <div class="status_btn" [ngStyle]="{'background-color': person.status ? '#92c83e': '#b7b7b7'}"></div>
             <img src="./{{ person.avatar }}" alt="avatar">
             {{ person.fullname }}
             </div>
