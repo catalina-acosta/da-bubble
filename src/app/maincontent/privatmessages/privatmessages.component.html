@@ -1,1 +1,22 @@
-<p>privatmessages works!</p>
+<section>
+    <h1>Private messages between 2 users</h1>
+    @for (message of firebase.allMessages; track $index) {
+        @if(message.senderId == currentUserId || message.receiverId == currentUserId ) {
+            
+            @if (message.receiverId == currentConversationPartner || message.senderId == currentConversationPartner) {
+                
+                <p>{{message.text}}</p>
+            }
+        }
+    }
+    <h1>group messages / filtered by channel</h1>
+    @for (message of firebase.allMessages; track $index) {
+        @if(message.channelId == currentChannel ) {
+                <p>{{message.text}}</p>
+        }
+    }
+    <h1>all users</h1>
+    @for (user of firebase.allUsersList; track $index) {
+        <p>{{user.fullname}}</p>
+    }
+</section>

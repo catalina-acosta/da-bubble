@@ -6,21 +6,4 @@ export interface UserInterface {
     email: string;
     avatar: string;
     status: boolean;
-    privateMessages?: [
-        {
-            userId: string,
-            messages: [
-                {
-                    text: string,
-                    date: string,
-                    time: number,
-                    reactions: [{
-                        emoji: string, 
-                        counter: number
-                    }
-                    ]
-                }
-            ]
-        }
-    ]
 }
