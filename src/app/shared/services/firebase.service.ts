@@ -66,31 +66,6 @@ export class FirebaseService {
     }
   //#endregion
 
-  async getUsers(): Promise<UserInterface[]> {
-    try {
-      const usersRef = collection(this.firebase, "users");
-      const usersSnapshot = await getDocs(usersRef);
-      const usersList: UserInterface[] = [];
-      
-      usersSnapshot.forEach(doc => {
-        const data = doc.data() as UserInterface; // <-- Typecast hinzufügen
-        usersList.push({
-          id: doc.id,
-          fullname: data.fullname,
-          name: data.name,
-          lastname: data.lastname,
-          email: data.email,
-          avatar: data.avatar,
-          status: data.status,
-        });
-      });
-      return usersList;
-    } catch (error) {
-      console.error("Error fetching users: ", error);
-      return [];
-    }
-  }
-
   async getMessages() {
     try {
       const messagesRef = collection(this.firebase, "messages");
@@ -118,13 +93,16 @@ export class FirebaseService {
     }
   }
 
-  async getUserList() {
+  async getUserList(): Promise<UserInterface[]> {
     try {
       const usersRef = collection(this.firebase, "users");
       const usersSnapshot = await getDocs(usersRef);
-
+  
+      // Zurücksetzen der Liste, falls sie vorher schon Daten hatte
+      this.allUsersList = [];
+  
       usersSnapshot.forEach(doc => {
-        const data = doc.data() as UserInterface; // <-- Typecast hinzufügen
+        const data = doc.data() as UserInterface; 
         this.allUsersList.push({
           id: doc.id,
           fullname: data.fullname,
@@ -135,12 +113,15 @@ export class FirebaseService {
           status: data.status,
         });
       });
-      console.log(this.allMessages);
+  
+      // Gib die Liste der Benutzer zurück
+      return this.allUsersList;
       
-      // return messagesList;
     } catch (error) {
-      console.error("Error fetching messages: ", error);
-      // return [];
+      console.error("Error fetching users: ", error);
+      // Gib im Fehlerfall ein leeres Array zurück
+      return [];
     }
   }
+  
 }

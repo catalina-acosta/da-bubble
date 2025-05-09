@@ -26,7 +26,7 @@ export class HeaderComponent {
   }
 
   async loadUsers() {
-    this.allPersons = await this.firebase.getUsers(); // Benutzer von Firebase laden
+    this.allPersons = await this.firebase.getUserList(); // Benutzer von Firebase laden
     this.filteredPersons = [...this.allPersons]; // Initialisieren der gefilterten Benutzer
   }
 
