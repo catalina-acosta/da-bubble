@@ -43,13 +43,44 @@
   }
 
   @if(showProfilDropdown){
-    <div class="overlay" (click)="closeProfilMenu()"></div>
+    <div class="overlay" (click)="closeProfilMenu(); closeProfilDialog()"></div>
     <div class="profil_dropdown">
       <ul>
-        <li>Profil</li>
+        <li (click)="openProfilDialog()">Profil</li>
         <li>Log out</li>
       </ul>
     </div>
-    }
+    } 
+    
+    <!-- Profi-Dialog -->
+   @if(profilDialogisClicked){
+    <div class="profil_menu">
+      <div class="profil_header">
+        <h3>Profil</h3>
+        <div class="close_btn" (click)="closeProfilDialog()"><img src="./assets/icon/close.svg" alt="close"></div>
+      </div>
+
+      <div class="profil_img"><img src="{{ currentUser?.avatar }}" alt="avatar"></div>
+
+      <div class="name_edit_content">
+      <h2>{{ currentUser?.fullname }}</h2>
+      <p class="edit_btn" (click)="editDialog()">Bearbeiten</p>
+      </div>
+
+      <div class="status_content">
+        <div class="status_profil" [ngStyle]="{'background-color': currentUser?.status ? '#92c83e': '#b7b7b7'}"></div>
+        <span [ngStyle]="{'color': currentUser?.status ? '#92c83e': '#b7b7b7'}">
+          {{ currentUser?.status ? 'Aktiv' : 'Offline' }}
+        </span>
+      </div>
+
+      <div class="status_content">
+        <img src="./assets/icon/mail.svg" alt="email">
+        <p class="edit_btn">{{ currentUser?.email }}</p>
+      </div>
+    </div>
+   }
   </div>
+
+ 
 </header>
