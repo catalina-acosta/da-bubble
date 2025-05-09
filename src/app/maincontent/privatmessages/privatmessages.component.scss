@@ -1,3 +1,5 @@
+@use '../../../styles.scss' as styles; 
+
 section {
     width: 100%;
     background-color: white;
@@ -15,6 +17,17 @@ section {
     align-items: center;
     border-bottom: 2px solid #80808014;
     margin-bottom: 4rem;
+
+    .avatar-wrapper {
+        display: flex;
+        align-items: center;
+        .avatar {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 2rem;
+            background-color: aquamarine;
+        }
+    }
 }
 
 .date {
@@ -38,10 +51,31 @@ section {
 }
 
 .message-wrapper {
+    display: flex;
+    padding: 3rem 0;
+    gap: 1rem;
     .avatar-large {
         width: 3rem;
         height: 3rem;
         border-radius: 2rem;
         background-color: aquamarine;
+    }
+}
+
+.message-info-wrapper {
+    .name-and-time {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .message {
+        background-color: styles.$lightpurple;
+        padding: 1rem;
+        border-radius: 0 1.5rem 1.5rem;
+    }
+
+    .threads {
+        display: flex;
+        gap: 0.5rem;
     }
 }

@@ -22,7 +22,7 @@
                 <div class="message-info-wrapper">
                     <div class="name-and-time">
                         <p class="user-name">Noah ...</p>
-                        <p class="time"></p>
+                        <p class="time">14:02 Uhr</p>
                     </div>
                     <div class="message">
                         <p>Hi, alles gut?</p>
@@ -38,10 +38,33 @@
     <h1>Private messages between 2 users</h1>
     @for (message of firebase.allMessages; track $index) {
         @if(message.senderId == currentUserId || message.receiverId == currentUserId ) {
-            
             @if (message.receiverId == currentConversationPartner || message.senderId == currentConversationPartner) {
-                
-                <p>{{message.text}}</p>
+                <div class="message-item">
+            <div class="date">
+                <div class="line"></div>
+                <p>{{message.date}}</p>
+            </div>
+            <div class="message-wrapper">
+                <div class="avatar-large"><img src="" alt=""></div>
+                <div class="message-info-wrapper">
+                    <div class="name-and-time">
+                        @for (user of firebase.allUsersList; track $index) {
+                            @if (user.id == message.receiverId) {
+                                <p class="user-name">{{user.fullname}}</p>
+                            }
+                        }
+                        <p class="time">{{message.time}}</p>
+                    </div>
+                    <div class="message">
+                        <p>{{message.text}}</p>
+                    </div>
+                    <div class="threads">
+                        <p>zwei Antworten</p>
+                        <p>letze Antwort 14:50</p>
+                    </div>
+                </div>
+            </div>
+        </div>
             }
         }
     }
