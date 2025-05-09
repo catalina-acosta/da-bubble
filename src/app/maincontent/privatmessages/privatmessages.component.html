@@ -1,4 +1,40 @@
 <section>
+    <div class="channel-bar">
+        <div class="dropdown-channel">
+            <p>#channel name</p>
+        </div>
+        <div class="avatar-wrapper">
+            <div class="avatar"></div>
+            <div class="avatar"></div>
+            <div class="avatar"></div>
+            <div class="avatar add-icon"></div>
+            <p>+3</p>
+        </div>
+    </div>
+    <div class="chat-wrapper">
+        <div class="message-item">
+            <div class="date">
+                <div class="line"></div>
+                <p>Dienstag, 14 January</p>
+            </div>
+            <div class="message-wrapper">
+                <div class="avatar-large"></div>
+                <div class="message-info-wrapper">
+                    <div class="name-and-time">
+                        <p class="user-name">Noah ...</p>
+                        <p class="time"></p>
+                    </div>
+                    <div class="message">
+                        <p>Hi, alles gut?</p>
+                    </div>
+                    <div class="threads">
+                        <p>zwei Antworten</p>
+                        <p>letze Antwort 14:50</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <h1>Private messages between 2 users</h1>
     @for (message of firebase.allMessages; track $index) {
         @if(message.senderId == currentUserId || message.receiverId == currentUserId ) {
@@ -9,14 +45,15 @@
             }
         }
     }
-    <h1>group messages / filtered by channel</h1>
-    @for (message of firebase.allMessages; track $index) {
-        @if(message.channelId == currentChannel ) {
-                <p>{{message.text}}</p>
-        }
-    }
-    <h1>all users</h1>
-    @for (user of firebase.allUsersList; track $index) {
-        <p>{{user.fullname}}</p>
-    }
 </section>
+
+<!-- <h1>group messages / filtered by channel</h1>
+@for (message of firebase.allMessages; track $index) {
+    @if(message.channelId == currentChannel ) {
+            <p>{{message.text}}</p>
+    }
+}
+<h1>all users</h1>
+@for (user of firebase.allUsersList; track $index) {
+    <p>{{user.fullname}}</p>
+} -->
