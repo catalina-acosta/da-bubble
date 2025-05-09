@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { UserInterface } from '../../user.interface';
 import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-header',
   imports: [CommonModule, FormsModule],
-  standalone:true,
+  standalone: true,
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   firebase = inject(FirebaseService);
@@ -18,15 +18,22 @@ export class HeaderComponent {
   searchTerm: string = '';
   showDropdown: boolean = false;
   filteredPersons: UserInterface[] = [];
-  allPersons: UserInterface[] = []; 
+  allPersons: UserInterface[] = [];
+  currentUser: UserInterface | null = null;
 
   ngOnInit(): void {
     this.loadUsers();
   }
 
   async loadUsers() {
-    this.allPersons = await this.firebase.getUserList(); 
-    this.filteredPersons = [...this.allPersons]; 
+    this.allPersons = await this.firebase.getUserList();
+    console.log(this.allPersons);
+    this.filteredPersons = [...this.allPersons];
+
+    // ersten Benutzer als aktuell eingeloggten Gast setzen
+    if (this.allPersons.length > 0) {
+      this.currentUser = this.allPersons[0];
+    }
   }
 
   onInputFocus(): void {
@@ -36,21 +43,23 @@ export class HeaderComponent {
     this.showDropdown = true;
     this.filteredPersons = [...this.allPersons];
   }
-  
+
   onInputChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     const value = input.value.trim().toLowerCase();
-  
-    if (value.includes('@')) {
-      const query = value.split('@')[1] || ''; 
-      this.filteredPersons = this.allPersons.filter(person => 
-          person.firstname.toLowerCase().includes(query) || 
-          person.fullname.toLocaleLowerCase().includes(query));
 
-      this.showDropdown = this.filteredPersons.length > 0; 
+    if (value.includes('@')) {
+      const query = value.split('@')[1] || '';
+      this.filteredPersons = this.allPersons.filter(
+        (person) =>
+          person.firstname.toLowerCase().includes(query) ||
+          person.fullname.toLocaleLowerCase().includes(query)
+      );
+
+      this.showDropdown = this.filteredPersons.length > 0;
     } else {
       this.showDropdown = false;
-      this.filteredPersons=[];
+      this.filteredPersons = [];
     }
   }
 
@@ -59,16 +68,16 @@ export class HeaderComponent {
     this.showDropdown = false;
   }
 
-    // schließt das Dropdown beim Klick außerhalb
-    @HostListener('document:click', ['$event'])
-    handleClickOutside(event: MouseEvent) {
-      const clickedInside = this.elementRef.nativeElement.contains(event.target);
-      if (!clickedInside) {
-        this.showDropdown = false;
+  // schließt das Dropdown beim Klick außerhalb
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(event: MouseEvent) {
+    const clickedInside = this.elementRef.nativeElement.contains(event.target);
+    if (!clickedInside) {
+      this.showDropdown = false;
 
-        if(this.searchTerm === '@'){
-          this.searchTerm = '';
-        }
+      if (this.searchTerm === '@') {
+        this.searchTerm = '';
       }
     }
+  }
 }
