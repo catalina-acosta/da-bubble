@@ -13,8 +13,7 @@ import { FirebaseService } from '../../services/firebase.service';
 })
 export class HeaderComponent {
   firebase = inject(FirebaseService);
-  private elementRef = inject(ElementRef); // Zugriff auf native DOM-Elemente
-
+  private elementRef = inject(ElementRef);
 
   searchTerm: string = '';
   showDropdown: boolean = false;
@@ -26,8 +25,8 @@ export class HeaderComponent {
   }
 
   async loadUsers() {
-    this.allPersons = await this.firebase.getUserList(); // Benutzer von Firebase laden
-    this.filteredPersons = [...this.allPersons]; // Initialisieren der gefilterten Benutzer
+    this.allPersons = await this.firebase.getUserList(); 
+    this.filteredPersons = [...this.allPersons]; 
   }
 
   onInputFocus(): void {
@@ -40,16 +39,18 @@ export class HeaderComponent {
   
   onInputChange(event: Event): void {
     const input = event.target as HTMLInputElement;
-    const value = input.value;
+    const value = input.value.trim().toLowerCase();
   
     if (value.includes('@')) {
-      const query = value.split('@')[1]?.toLowerCase() || ''; 
-      this.filteredPersons = query
-        ? this.allPersons.filter(person => person.name.toLowerCase().includes(query))
-        : [...this.allPersons];  
-      this.showDropdown = true; 
+      const query = value.split('@')[1] || ''; 
+      this.filteredPersons = this.allPersons.filter(person => 
+          person.firstname.toLowerCase().includes(query) || 
+          person.fullname.toLocaleLowerCase().includes(query));
+
+      this.showDropdown = this.filteredPersons.length > 0; 
     } else {
       this.showDropdown = false;
+      this.filteredPersons=[];
     }
   }
 

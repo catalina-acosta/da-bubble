@@ -106,7 +106,7 @@ export class FirebaseService {
         this.allUsersList.push({
           id: doc.id,
           fullname: data.fullname,
-          name: data.name,
+          firstname: data.firstname,
           lastname: data.lastname,
           email: data.email,
           avatar: data.avatar,
