@@ -96,7 +96,7 @@ input{
 
   .postion{
     top:2rem;
-    left: 2.4rem;
+    left: 12.1rem;
   }
 
 // Profil Content
@@ -132,6 +132,10 @@ input{
 @media (max-width:1160px){
     .avatar_name{
         display: none;
+    }
+    .postion{
+      top:2rem;
+      left: 2.4rem;
     }
 }
 

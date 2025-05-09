@@ -32,8 +32,9 @@
     @if(currentUser){
     <div class="avatar_content">
       <p class="avatar_name">{{ currentUser.fullname }}</p>
-      <div class="avatar_img"><img [src]="'./' + currentUser.avatar" alt="avatar" /></div>
       <div class="status_btn postion" [ngStyle]="{'background-color': currentUser.status ? '#92c83e': '#b7b7b7'}"></div>
+      <div class="avatar_img"><img [src]="'./' + currentUser.avatar" alt="avatar" /></div>
+    
       <div class="drop_nav_content">
         <img src="./assets/icon/keyboard_arrow_down.png" alt="" />
       </div>
