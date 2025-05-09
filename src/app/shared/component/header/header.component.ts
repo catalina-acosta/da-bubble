@@ -3,10 +3,11 @@ import { Component, ElementRef, HostListener, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserInterface } from '../../user.interface';
 import { FirebaseService } from '../../services/firebase.service';
+import { EditProfileDialogComponent } from '../edit-profile-dialog/edit-profile-dialog.component';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, EditProfileDialogComponent],
   standalone: true,
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -19,6 +20,7 @@ export class HeaderComponent {
   showDropdown: boolean = false;
   showProfilDropdown: boolean = false;
   profilDialogisClicked:boolean =false;
+  editDialogisClicked:boolean = false;
   filteredPersons: UserInterface[] = [];
   allPersons: UserInterface[] = [];
   currentUser: UserInterface | null = null;
@@ -77,7 +79,8 @@ export class HeaderComponent {
     if (!clickedInside) {
       this.showDropdown = false;
       this.showProfilDropdown = false;
-      this.profilDialogisClicked=false;
+      this.editDialogisClicked =false;
+
 
       if (this.searchTerm === '@') {
         this.searchTerm = '';
@@ -98,5 +101,7 @@ export class HeaderComponent {
     this.profilDialogisClicked=false;
   }
 
-  editDialog(){}
+  editDialog(){
+    this.editDialogisClicked =true;
+  }
 }
