@@ -17,6 +17,7 @@ export class HeaderComponent {
 
   searchTerm: string = '';
   showDropdown: boolean = false;
+  showProfilDropdown: boolean = false;
   filteredPersons: UserInterface[] = [];
   allPersons: UserInterface[] = [];
   currentUser: UserInterface | null = null;
@@ -74,10 +75,18 @@ export class HeaderComponent {
     const clickedInside = this.elementRef.nativeElement.contains(event.target);
     if (!clickedInside) {
       this.showDropdown = false;
+      this.showProfilDropdown = false;
 
       if (this.searchTerm === '@') {
         this.searchTerm = '';
       }
     }
+  }
+
+  openProfilMenu(){
+    this.showProfilDropdown = true;
+  }
+  closeProfilMenu() {
+    this.showProfilDropdown = false;
   }
 }

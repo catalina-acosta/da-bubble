@@ -29,8 +29,9 @@
       }
     </div>
 
+<!-- Profil -->
     @if(currentUser){
-    <div class="avatar_content">
+    <div class="avatar_content" (click)="openProfilMenu()">
       <p class="avatar_name">{{ currentUser.fullname }}</p>
       <div class="status_btn postion" [ngStyle]="{'background-color': currentUser.status ? '#92c83e': '#b7b7b7'}"></div>
       <div class="avatar_img"><img [src]="'./' + currentUser.avatar" alt="avatar" /></div>
@@ -40,5 +41,15 @@
       </div>
     </div>
   }
+
+  @if(showProfilDropdown){
+    <div class="overlay" (click)="closeProfilMenu()"></div>
+    <div class="profil_dropdown">
+      <ul>
+        <li>Profil</li>
+        <li>Log out</li>
+      </ul>
+    </div>
+    }
   </div>
 </header>
