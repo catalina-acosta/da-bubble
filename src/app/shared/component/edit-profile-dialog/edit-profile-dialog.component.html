@@ -7,9 +7,9 @@
     <div class="profil_img"><img src="{{ currentUser?.avatar }}" alt="avatar"></div>
 
     <div class="name_edit_content">
-    <h2>vollständiger name</h2>
-    <input type="text">
-    <p class="save_btn" >speichern</p>
+    <h2>Vollständiger name</h2>
+    <input type="text" [placeholder]="currentUser?.fullname">
+    <button class="save_btn" >speichern</button>
     </div>
 
     <div class="status_content">

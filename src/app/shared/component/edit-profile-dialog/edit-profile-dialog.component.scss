@@ -14,8 +14,15 @@
   
   .name_edit_content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+  }
+
+  input {
+    width: 100%;
+    border-radius: 20rem;
+    padding: 0.5rem 1.5rem;
+    border:1px solid #444df2;
+    outline: none;
   }
   
   .status_profil {

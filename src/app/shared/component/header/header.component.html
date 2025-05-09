@@ -43,7 +43,7 @@
   }
 
   @if(showProfilDropdown){
-    <div class="overlay" (click)="closeProfilMenu(); closeProfilDialog()"></div>
+    <div class="overlay" (click)="closeProfilMenu(); closeProfilDialog(); editDialogisClicked = false"></div>
     <div class="profil_dropdown">
       <ul>
         <li (click)="openProfilDialog()">Profil</li>
@@ -82,7 +82,7 @@
    }
 
    @if(editDialogisClicked){
-    <div class="edit_menu">
+    <div class="edit_menu" (click)="$event.stopPropagation()">
       <app-edit-profile-dialog
       [currentUser]="currentUser"
       (close)="editDialogisClicked=false"
