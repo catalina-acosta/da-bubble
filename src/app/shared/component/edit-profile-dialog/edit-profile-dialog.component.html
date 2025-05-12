@@ -1,0 +1,26 @@
+<div class="profil_menu">
+    <div class="profil_header">
+      <h3>Dein Profil bearbeiten</h3>
+      <div class="close_btn" (click)="closeProfilDialog()"><img src="./assets/icon/close.svg" alt="close"></div>
+    </div>
+
+    <div class="profil_img"><img src="{{ currentUser?.avatar }}" alt="avatar"></div>
+
+    <div class="name_edit_content">
+    <h2>Vollständiger name</h2>
+    <input type="text" [placeholder]="currentUser?.fullname">
+    <button class="save_btn" >speichern</button>
+    </div>
+
+    <div class="status_content">
+      <div class="status_profil" [ngStyle]="{'background-color': currentUser?.status ? '#92c83e': '#b7b7b7'}"></div>
+      <strong [ngStyle]="{'color': currentUser?.status ? '#92c83e': '#b7b7b7'}">
+        {{ currentUser?.status ? 'Aktiv' : 'Offline' }}
+      </strong>
+    </div>
+
+    <div class="status_content">
+      <img src="./assets/icon/mail.svg" alt="email">
+      <p class="edit_btn">{{ currentUser?.email }}</p>
+    </div>
+  </div>
