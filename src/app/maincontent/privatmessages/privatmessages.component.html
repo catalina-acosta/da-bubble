@@ -49,7 +49,7 @@
                 <div class="message-info-wrapper">
                     <div class="name-and-time">
                         @for (user of firebase.allUsersList; track $index) {
-                            @if (user.id == message.receiverId) {
+                            @if (user.id == message.receiverId ) {
                                 <p class="user-name">{{user.fullname}}</p>
                             }
                         }
