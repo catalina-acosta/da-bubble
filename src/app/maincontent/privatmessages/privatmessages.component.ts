@@ -35,12 +35,21 @@ export class PrivatmessagesComponent {
   }
 
   submitForm(ngform: NgForm) {
+    console.log("form is submitted");
+    const now = new Date();
+  // Format date as YYYY-MM-DD
+    this.newMessage.date = now.toISOString().split('T')[0];
+    // Use Unix timestamp (milliseconds since epoch)
+    this.newMessage.time = now.getTime();
+    
     this.newMessage.senderId = this.currentUserId;
     this.newMessage.receiverId = this.currentConversationPartnerId;
     this.newMessage.channelId = this.currentChannel;
     this.newMessage.text = this.inputMessageText;
     this.formSubmitted = true;
-    if (ngform.valid) {            // Only check if the form is valid
+    if (ngform.valid) {    
+      console.log("form is valid");
+              // Only check if the form is valid
         this.firebase.addMessageToData(this.newMessage);          // Save the task to the database
         this.newMessageAdded = true;
         this.clearFormular(ngform);                        // Reset the form after submission                                  //set back all flags and arrays to default

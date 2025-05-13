@@ -68,13 +68,13 @@
             }
         }
     }
-    <form #addMessage="ngForm" (ngSubmit)="submitForm(addMessage)">
-        <label for="newMessage">Add new message</label>
-            <textarea id="newMessageInput" name="newMessageInput" placeholder="Nachricht an ..."
-                style="height:200px" [(ngModel)]="newMessage.text"></textarea>
-        <button type="submit"></button>
-    </form>
 </section>
+<form #addMessage="ngForm" (ngSubmit)="submitForm(addMessage)">
+    <label for="newMessage">Add new message</label>
+        <textarea id="inputMessageText" name="inputMessageText" placeholder="Nachricht an ..."
+            style="height:200px" [(ngModel)]="inputMessageText"></textarea>
+    <button type="submit">send</button>
+</form>
 
 <!-- <h1>group messages / filtered by channel</h1>
 @for (message of firebase.allMessages; track $index) {
