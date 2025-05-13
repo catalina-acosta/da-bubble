@@ -48,7 +48,6 @@ async saveProfile() {
     try {
       const userId = this.currentUser.id;
       await this.firebase.updateUserName(userId, this.editFullname);
-      console.log('Name erfolgreich aktualisiert!');
       
       this.currentUser.fullname = this.editFullname;
 

@@ -132,9 +132,6 @@ async logoutUser() {
   if (index > -1) {
     this.allPersons[index] = { ...updatedUser };
   }
-
-  // Optional: console log
-  console.log('User updated in header:', updatedUser);
 }
 
 }
