@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { users, messages } from './dummyData'
-import { collection, doc, Firestore, getDocs, setDoc } from '@angular/fire/firestore';
+import { addDoc, collection, doc, Firestore, getDocs, setDoc } from '@angular/fire/firestore';
 import { UserInterface } from '../user.interface';
 import { MessageInterface } from '../message.interface';
 
@@ -123,7 +123,7 @@ export class FirebaseService {
       return [];
     }
   }
-  
+
   async updateUserStatus(userId: string, status: boolean): Promise<void> {
   try {
     const userDocRef = doc(this.firebase, 'users', userId);
@@ -133,5 +133,9 @@ export class FirebaseService {
     console.error('Error updating user status:', error);
   }
 }
-  
+
+  async addMessageToData(newMessage: MessageInterface) {
+    await addDoc(collection(this.firebase, "messages"), newMessage);
+  }
+
 }

@@ -38,7 +38,7 @@
     <h1>Private messages between 2 users</h1>
     @for (message of firebase.allMessages; track $index) {
         @if(message.senderId == currentUserId || message.receiverId == currentUserId ) {
-            @if (message.receiverId == currentConversationPartner || message.senderId == currentConversationPartner) {
+            @if (message.receiverId == currentConversationPartnerId || message.senderId == currentConversationPartnerId) {
                 <div class="message-item">
             <div class="date">
                 <div class="line"></div>
@@ -69,6 +69,12 @@
         }
     }
 </section>
+<form #addMessage="ngForm" (ngSubmit)="submitForm(addMessage)">
+    <label for="newMessage">Add new message</label>
+        <textarea id="inputMessageText" name="inputMessageText" placeholder="Nachricht an ..."
+            style="height:200px" [(ngModel)]="inputMessageText"></textarea>
+    <button type="submit">send</button>
+</form>
 
 <!-- <h1>group messages / filtered by channel</h1>
 @for (message of firebase.allMessages; track $index) {
