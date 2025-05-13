@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { users, messages } from './dummyData'
-import { collection, doc, Firestore, getDocs, setDoc } from '@angular/fire/firestore';
+import { addDoc, collection, doc, Firestore, getDocs, setDoc } from '@angular/fire/firestore';
 import { UserInterface } from '../user.interface';
 import { MessageInterface } from '../message.interface';
 
@@ -124,4 +124,7 @@ export class FirebaseService {
     }
   }
   
+  async addMessageToData(newMessage: MessageInterface) {
+    await addDoc(collection(this.firebase, "messages"), newMessage);
+  }
 }
