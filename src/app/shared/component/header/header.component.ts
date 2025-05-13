@@ -126,12 +126,6 @@ async logoutUser() {
   if (this.currentUser && this.currentUser.id === updatedUser.id) {
     this.currentUser.fullname = updatedUser.fullname;
   }
-
-  // Falls du die Liste auch updaten willst:
-  const index = this.allPersons.findIndex(user => user.id === updatedUser.id);
-  if (index > -1) {
-    this.allPersons[index] = { ...updatedUser };
-  }
 }
 
 }
