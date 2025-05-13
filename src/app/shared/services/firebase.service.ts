@@ -123,8 +123,19 @@ export class FirebaseService {
       return [];
     }
   }
-  
+
+  async updateUserStatus(userId: string, status: boolean): Promise<void> {
+  try {
+    const userDocRef = doc(this.firebase, 'users', userId);
+    await setDoc(userDocRef, { status: status }, { merge: true });
+    console.log(`User status updated to ${status}`);
+  } catch (error) {
+    console.error('Error updating user status:', error);
+  }
+}
+
   async addMessageToData(newMessage: MessageInterface) {
     await addDoc(collection(this.firebase, "messages"), newMessage);
   }
+
 }

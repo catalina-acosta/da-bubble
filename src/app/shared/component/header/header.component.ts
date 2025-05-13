@@ -40,6 +40,23 @@ export class HeaderComponent {
     }
   }
 
+  async loginUser() {
+  if (this.currentUser) {
+    await this.firebase.updateUserStatus(this.currentUser.id, true);
+    this.currentUser.status = true; // Lokale Anzeige auch aktualisieren
+  }
+}
+
+async logoutUser() {
+  if (this.currentUser) {
+    await this.firebase.updateUserStatus(this.currentUser.id, false);
+    this.currentUser.status = false; // Lokale Anzeige auch aktualisieren
+  }
+  // evtl. noch Weiterleitung oder User leeren
+  // this.currentUser = null;
+}
+
+
   onInputFocus(): void {
     if (!this.searchTerm.startsWith('@')) {
       this.searchTerm = '@';

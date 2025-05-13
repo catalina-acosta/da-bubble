@@ -46,8 +46,9 @@
     <div class="overlay" (click)="closeProfilMenu(); closeProfilDialog(); editDialogisClicked = false"></div>
     <div class="profil_dropdown">
       <ul>
-        <li (click)="openProfilDialog()">Profil</li>
-        <li>Log out</li>
+        <li (click)="openProfilDialog(); loginUser()">Profil</li>
+        <li (click)="logoutUser()">Log out</li>
+
       </ul>
     </div>
     } 
