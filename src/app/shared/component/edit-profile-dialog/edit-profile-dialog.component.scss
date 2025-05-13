@@ -1,58 +1,95 @@
-  
-  .profil_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .profil_img {
-    display: flex;
-    justify-content: center;
-    height: 10rem;
-    padding: 1rem;
-  }
-  
-  .name_edit_content {
-    display: flex;
-    flex-direction: column;
-  }
+.profil_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  input {
-    width: 100%;
-    border-radius: 20rem;
-    padding: 0.5rem 1.5rem;
-    border:1px solid #444df2;
-    outline: none;
+.profil_img {
+  display: flex;
+  justify-content: center;
+  height: 10rem;
+  padding: 1rem;
+}
+
+.name_edit_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.name_content {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  border-radius: 20rem;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #444df2;
+  outline: none;
+}
+
+.status_profil {
+  z-index: 1;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 3px solid rgb(255 255 255);
+  border-radius: 2rem;
+}
+
+.status_content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem 0;
+}
+
+.edit_btn {
+  color: #444df2;
+  font-weight: 500;
+  cursor: pointer;
+}
+.close_btn {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  transition: 125ms ease-in-out;
+  cursor: pointer;
+}
+.close_btn:hover {
+  background-color: #666df123;
+  border-radius: 20px;
+}
+
+.btn_content {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 50px;
+}
+button {
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: 1px solid #444df2;
+  color: #444df2;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 145ms ease-in-out;
+
+  &:hover {
+    background-color: #444df2;
+    color: #fff;
   }
-  
-  .status_profil {
-    z-index: 1;
-    width: 1.3rem;
-    height: 1.3rem;
-    border: 3px solid rgb(255 255 255);
-    border-radius: 2rem;
+}
+
+.save_btn {
+  background-color: #444df2;
+  border: none;
+  color: #fff;
+  transition: 145ms ease-in-out;
+  &:hover {
+    background-color: #444df2af;
   }
-  
-  .status_content {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 1rem 0;
-  }
-  
-  .edit_btn {
-    color: #444df2;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  .close_btn {
-    width: 25px;
-    height: 25px;
-    display: flex;
-    transition: 125ms ease-in-out;
-    cursor: pointer;
-  }
-  .close_btn:hover{
-    background-color: #666df123;
-    border-radius: 20px;
-  }
+}

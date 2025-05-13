@@ -87,6 +87,7 @@
       <app-edit-profile-dialog
       [currentUser]="currentUser"
       (close)="editDialogisClicked=false"
+      (userUpdated)="onUserUpdated($event)"
       ></app-edit-profile-dialog>
     </div>
    }

@@ -3,6 +3,7 @@ import { users, messages } from './dummyData'
 import { addDoc, collection, doc, Firestore, getDocs, setDoc } from '@angular/fire/firestore';
 import { UserInterface } from '../user.interface';
 import { MessageInterface } from '../message.interface';
+import { user } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -137,5 +138,14 @@ export class FirebaseService {
   async addMessageToData(newMessage: MessageInterface) {
     await addDoc(collection(this.firebase, "messages"), newMessage);
   }
+
+async updateUserName(userId: string, fullname: string): Promise<void> {
+  try {
+    const userDocRef = doc(this.firebase, 'users', userId);
+    await setDoc(userDocRef, { fullname: fullname }, { merge: true });
+  } catch (error) {
+    console.error('Error updating user fullname:', error);
+  }
+}
 
 }
