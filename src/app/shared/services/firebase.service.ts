@@ -56,6 +56,7 @@ export class FirebaseService {
             channelId: element.channelId,
             text: element.text,
             date: element.date,
+            formattedTime: element.formattedTime,
             time: element.time,
             reactions: element.reactions,
           });

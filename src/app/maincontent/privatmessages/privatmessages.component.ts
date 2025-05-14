@@ -77,6 +77,7 @@ export class PrivatmessagesComponent implements AfterViewInit {
         this.conversation.push(message);
       }
     });
+    this.conversation.sort((a, b) => a.time - b.time);
     console.log(this.conversation);
   } else {
     this.conversation = [];
