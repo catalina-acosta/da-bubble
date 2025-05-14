@@ -60,12 +60,20 @@ section {
     display: flex;
     padding: 3rem 0;
     gap: 1rem;
-    .avatar-large {
-        width: 3rem;
-        height: 3rem;
-        border-radius: 2rem;
-        background-color: aquamarine;
-    }
+}
+
+.message-wrapper-right {
+    display: flex;
+    padding: 3rem 0;
+    gap: 1rem;
+    flex-direction: row-reverse;
+}
+
+.avatar-large {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 2rem;
+    background-color: aquamarine;
 }
 
 .message-info-wrapper {
@@ -74,10 +82,22 @@ section {
         gap: 1rem;
     }
 
+    .name-and-time-right {
+        display: flex;
+        gap: 1rem;
+        flex-direction: row-reverse;
+    }
+
     .message {
         background-color: styles.$lightpurple;
         padding: 1rem;
         border-radius: 0 1.5rem 1.5rem;
+    }
+
+    .message-right {
+        background-color: styles.$lightpurple;
+        padding: 1rem;
+        border-radius: 1.5rem 0 1.5rem 1.5rem;
     }
 
     .threads {

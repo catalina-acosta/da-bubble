@@ -86,7 +86,7 @@ export class FirebaseService {
           reactions: data.reactions,
         });
       });
-      console.log(this.allMessages);
+      // console.log(this.allMessages);
       
       // return messagesList;
     } catch (error) {

@@ -12,7 +12,35 @@
         </div>
     </div>
     <div class="chat-wrapper" #chatContainer>
-        @for (message of firebase.allMessages; track $index) {
+        @for (message of this.conversation; track $index) {
+            <div class="message-item" >
+                <div class="date">
+                    <div class="line"></div>
+                    <p>{{message.date}}</p>
+                </div>
+                <div [ngClass]="message.senderId === currentUserId ? 'message-wrapper-right' : 'message-wrapper'">
+                    @for (user of firebase.allUsersList; track $index) {
+                        @if(user.id === message.senderId ) {
+                            <img class="avatar-large" [src]="user.avatar" alt="">
+                            <div class="message-info-wrapper">
+                                <div [ngClass]="message.senderId === currentUserId ? 'name-and-time-right' : 'name-and-time'">
+                                    <p class="user-name">{{user.fullname}}</p>
+                                    <p class="time">{{message.formattedTime}}</p>
+                                </div>
+                                <div [ngClass]="message.senderId === currentUserId ? 'message-right' : 'message'">
+                                    <p>{{message.text}}</p>
+                                </div>
+                                <div class="threads">
+                                    <p>zwei Antworten</p>
+                                    <p>letze Antwort 14:50</p>
+                                </div>
+                            </div>
+                        } 
+                    }
+                </div>
+            </div>
+        }
+        <!-- @for (message of firebase.allMessages; track $index) {
             @if(message.senderId == currentUserId || message.receiverId == currentUserId ) {
                 @if (message.receiverId == currentConversationPartnerId || message.senderId == currentConversationPartnerId) {
                     <div class="message-item">
@@ -21,7 +49,7 @@
                     <p>{{message.date}}</p>
                 </div>
                 <div class="message-wrapper">
-                    <div class="avatar-large"><img src="" alt=""></div>
+                    <div><img class="avatar-large" src="" alt=""></div>
                     <div class="message-info-wrapper">
                         <div class="name-and-time">
                             @for (user of firebase.allUsersList; track $index) {
@@ -43,7 +71,7 @@
             </div>
                 }
             }
-        }
+        } -->
     </div>
     <form #addMessage="ngForm" (ngSubmit)="submitForm(addMessage)">
         <div class="textarea-wrapper">

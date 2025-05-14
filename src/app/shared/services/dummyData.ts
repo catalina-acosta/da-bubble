@@ -57,7 +57,8 @@ export const messages = [
         channelId: '',
         text: 'Hey Steffen, hast du die neuen Zahlen für das Projekt?',
         date: '2025-05-06',
-        time: 1000,
+        time: 1746525600000, // 2025-05-06T10:00:00Z
+        formattedTime: '10:00',
         reactions: [
             { emoji: '👍', counter: 2 }
         ]
@@ -68,7 +69,8 @@ export const messages = [
         channelId: '',
         text: 'Ja, ich schicke sie dir gleich. Brauchst du noch etwas?',
         date: '2025-05-06',
-        time: 1015,
+        time: 1746526500000, // 2025-05-06T10:15:00Z
+        formattedTime: '10:15',
         reactions: [
             { emoji: '✅', counter: 1 }
         ]
@@ -79,7 +81,8 @@ export const messages = [
         channelId: '',
         text: 'Das wäre super, danke dir!',
         date: '2025-05-06',
-        time: 1020,
+        time: 1746526800000, // 2025-05-06T10:20:00Z
+        formattedTime: '10:20',
         reactions: [
             { emoji: '👏', counter: 1 }
         ]
@@ -92,7 +95,8 @@ export const messages = [
         channelId: '',
         text: 'Hi Max, wie läuft es mit dem Design für die neue Seite?',
         date: '2025-05-05',
-        time: 1400,
+        time: 1746439200000, // 2025-05-05T14:00:00Z
+        formattedTime: '14:00',
         reactions: [
             { emoji: '🤔', counter: 1 }
         ]
@@ -103,7 +107,8 @@ export const messages = [
         channelId: '',
         text: 'Hey Felix, ich bin fast fertig. Ich schicke dir später einen Entwurf.',
         date: '2025-05-05',
-        time: 1415,
+        time: 1746440100000, // 2025-05-05T14:15:00Z
+        formattedTime: '14:15',
         reactions: [
             { emoji: '👍', counter: 3 }
         ]
@@ -114,7 +119,8 @@ export const messages = [
         channelId: '',
         text: 'Perfekt, danke dir!',
         date: '2025-05-05',
-        time: 1420,
+        time: 1746440400000, // 2025-05-05T14:20:00Z
+        formattedTime: '14:20',
         reactions: [
             { emoji: '👏', counter: 2 }
         ]
@@ -127,7 +133,8 @@ export const messages = [
         channelId: '',
         text: 'Hallo Sophia, hast du Zeit, die Präsentation durchzugehen?',
         date: '2025-05-07',
-        time: 900,
+        time: 1746618000000, // 2025-05-07T09:00:00Z
+        formattedTime: '09:00',
         reactions: [
             { emoji: '📅', counter: 1 }
         ]
@@ -138,7 +145,8 @@ export const messages = [
         channelId: '',
         text: 'Hi Felix, klar, wie wäre es um 14 Uhr?',
         date: '2025-05-07',
-        time: 915,
+        time: 1746618900000, // 2025-05-07T09:15:00Z
+        formattedTime: '09:15',
         reactions: [
             { emoji: '👍', counter: 2 }
         ]
@@ -149,7 +157,8 @@ export const messages = [
         channelId: '',
         text: 'Passt perfekt, danke!',
         date: '2025-05-07',
-        time: 920,
+        time: 1746619200000, // 2025-05-07T09:20:00Z
+        formattedTime: '09:20',
         reactions: [
             { emoji: '✅', counter: 1 }
         ]
@@ -162,7 +171,8 @@ export const messages = [
         channelId: '',
         text: 'Hey Lukas, kannst du mir die Dokumentation für das Backend schicken?',
         date: '2025-05-04',
-        time: 1500,
+        time: 1746351600000, // 2025-05-04T15:00:00Z
+        formattedTime: '15:00',
         reactions: [
             { emoji: '📄', counter: 1 }
         ]
@@ -173,7 +183,8 @@ export const messages = [
         channelId: '',
         text: 'Klar, ich schicke sie dir gleich.',
         date: '2025-05-04',
-        time: 1510,
+        time: 1746352200000, // 2025-05-04T15:10:00Z
+        formattedTime: '15:10',
         reactions: [
             { emoji: '👍', counter: 2 }
         ]
@@ -184,7 +195,8 @@ export const messages = [
         channelId: '',
         text: 'Super, danke dir!',
         date: '2025-05-04',
-        time: 1515,
+        time: 1746352500000, // 2025-05-04T15:15:00Z
+        formattedTime: '15:15',
         reactions: [
             { emoji: '👏', counter: 1 }
         ]
@@ -197,7 +209,8 @@ export const messages = [
         channelId: '',
         text: 'Hi Anna, hast du die Änderungen im Dokument gesehen?',
         date: '2025-05-03',
-        time: 1100,
+        time: 1746260400000, // 2025-05-03T11:00:00Z
+        formattedTime: '11:00',
         reactions: [
             { emoji: '👀', counter: 1 }
         ]
@@ -208,7 +221,8 @@ export const messages = [
         channelId: '',
         text: 'Ja, ich habe sie gesehen. Sieht gut aus!',
         date: '2025-05-03',
-        time: 1115,
+        time: 1746261300000, // 2025-05-03T11:15:00Z
+        formattedTime: '11:15',
         reactions: [
             { emoji: '👍', counter: 3 }
         ]
@@ -219,7 +233,8 @@ export const messages = [
         channelId: '',
         text: 'Danke für das Feedback!',
         date: '2025-05-03',
-        time: 1120,
+        time: 1746261600000, // 2025-05-03T11:20:00Z
+        formattedTime: '11:20',
         reactions: [
             { emoji: '😊', counter: 2 }
         ]

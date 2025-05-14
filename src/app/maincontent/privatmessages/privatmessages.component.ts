@@ -3,10 +3,11 @@ import { FirebaseService } from '../../shared/services/firebase.service';
 import { MessageInterface } from '../../shared/message.interface';
 import { NgForm, FormsModule } from '@angular/forms';
 import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-privatmessages',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './privatmessages.component.html',
   styleUrl: './privatmessages.component.scss'
 })
@@ -15,12 +16,14 @@ export class PrivatmessagesComponent implements AfterViewInit {
   firebase = inject(FirebaseService);
   currentUserId: string = '74izbWVB9XFaPrkOl2IW';
   currentConversationPartnerId: string = 'NsJ0o0lAuQVfQ7r28lRr';
+  currentCPAvatar: string = "";
   currentChannel: string = 'testChannel';
   currentUserName: string = 'Felix';
+  currentUserAvatar: string = "";
   inputMessageText: string = '';
   formSubmitted: boolean = false;
   newMessageAdded: boolean = false;
-  
+  conversation: MessageInterface[] = [];
   newMessage: MessageInterface = {
     senderId: "",
     receiverId: "",
@@ -35,6 +38,11 @@ export class PrivatmessagesComponent implements AfterViewInit {
         counter: 0,
       }
     ]
+  };
+
+  async ngOnInit() {
+    await this.firebase.getMessages();
+    this.filterMessages();
   }
   
   ngAfterViewInit() {
@@ -54,6 +62,36 @@ export class PrivatmessagesComponent implements AfterViewInit {
       this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
     } catch (err) {}
   }
+
+  filterMessages() {
+  if (this.firebase.allMessages && this.firebase.allMessages.length > 0) {
+    this.conversation = [];
+    this.firebase.allMessages.forEach(message => {
+      const isBetweenUsers =
+        (message.senderId === this.currentUserId && message.receiverId === this.currentConversationPartnerId) ||
+        (message.senderId === this.currentConversationPartnerId && message.receiverId === this.currentUserId);
+
+      const alreadyExists = this.conversation.some(m => m.id === message.id);
+
+      if (isBetweenUsers && !alreadyExists) {
+        this.conversation.push(message);
+      }
+    });
+    console.log(this.conversation);
+  } else {
+    this.conversation = [];
+  }
+}
+  // findAvatar() {
+  //   for (let index = 0; index < this.firebase.allUsersList.length; index++) {
+  //     if(this.firebase.allUsersList[index].id == this.currentUserId) {
+  //       this.currentUserAvatar = this.firebase.allUsersList[index].avatar;
+  //     } else if(this.firebase.allUsersList[index].id == this.currentConversationPartnerId) {
+  //       this.currentCPAvatar = this.firebase.allUsersList[index].avatar;
+  //     }
+      
+  //   }
+  // }
   
   submitForm(ngform: NgForm) {
     console.log("form is submitted");
