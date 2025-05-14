@@ -1,4 +1,5 @@
 $purple: #444DF2;
+$midpurple: #ADB0D9;
 $lightpurple:  #eceefe;
 
 *{
@@ -19,4 +20,9 @@ body{
 @font-face {
     font-family: 'Nunito';
     src: url('../public/assets/fonts/Nunito/Nunito-VariableFont_wght.ttf');
+}
+
+button {
+    border: none;
+    background-color: transparent;
 }

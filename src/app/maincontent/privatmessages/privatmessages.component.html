@@ -12,69 +12,54 @@
         </div>
     </div>
     <div class="chat-wrapper">
-        <div class="message-item">
-            <div class="date">
-                <div class="line"></div>
-                <p>Dienstag, 14 January</p>
-            </div>
-            <div class="message-wrapper">
-                <div class="avatar-large"></div>
-                <div class="message-info-wrapper">
-                    <div class="name-and-time">
-                        <p class="user-name">Noah ...</p>
-                        <p class="time">14:02 Uhr</p>
-                    </div>
-                    <div class="message">
-                        <p>Hi, alles gut?</p>
-                    </div>
-                    <div class="threads">
-                        <p>zwei Antworten</p>
-                        <p>letze Antwort 14:50</p>
-                    </div>
+        @for (message of firebase.allMessages; track $index) {
+            @if(message.senderId == currentUserId || message.receiverId == currentUserId ) {
+                @if (message.receiverId == currentConversationPartnerId || message.senderId == currentConversationPartnerId) {
+                    <div class="message-item">
+                <div class="date">
+                    <div class="line"></div>
+                    <p>{{message.date}}</p>
                 </div>
-            </div>
-        </div>
-    </div>
-    <h1>Private messages between 2 users</h1>
-    @for (message of firebase.allMessages; track $index) {
-        @if(message.senderId == currentUserId || message.receiverId == currentUserId ) {
-            @if (message.receiverId == currentConversationPartnerId || message.senderId == currentConversationPartnerId) {
-                <div class="message-item">
-            <div class="date">
-                <div class="line"></div>
-                <p>{{message.date}}</p>
-            </div>
-            <div class="message-wrapper">
-                <div class="avatar-large"><img src="" alt=""></div>
-                <div class="message-info-wrapper">
-                    <div class="name-and-time">
-                        @for (user of firebase.allUsersList; track $index) {
-                            @if (user.id == message.receiverId ) {
-                                <p class="user-name">{{user.fullname}}</p>
+                <div class="message-wrapper">
+                    <div class="avatar-large"><img src="" alt=""></div>
+                    <div class="message-info-wrapper">
+                        <div class="name-and-time">
+                            @for (user of firebase.allUsersList; track $index) {
+                                @if (user.id == message.receiverId ) {
+                                    <p class="user-name">{{user.fullname}}</p>
+                                }
                             }
-                        }
-                        <p class="time">{{message.time}}</p>
-                    </div>
-                    <div class="message">
-                        <p>{{message.text}}</p>
-                    </div>
-                    <div class="threads">
-                        <p>zwei Antworten</p>
-                        <p>letze Antwort 14:50</p>
+                            <p class="time">{{message.time}}</p>
+                        </div>
+                        <div class="message">
+                            <p>{{message.text}}</p>
+                        </div>
+                        <div class="threads">
+                            <p>zwei Antworten</p>
+                            <p>letze Antwort 14:50</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+                }
             }
         }
-    }
+    </div>
+    <form #addMessage="ngForm" (ngSubmit)="submitForm(addMessage)">
+        <div class="textarea-wrapper">
+            <textarea id="inputMessageText" name="inputMessageText" placeholder="Nachricht an ..."
+                [(ngModel)]="inputMessageText">
+            </textarea>
+            <div class="buttons-wrapper">
+                <div class="left-btns">
+                    <button><img src="./assets/icon/messages/sentiment_satisfied.svg" alt=""></button>
+                    <button ><img src="./assets/icon/messages/alternate_email.svg" alt=""></button>
+                </div>
+                <button type="submit"><img src="./assets/icon/messages/send.svg" alt=""></button>
+            </div>
+        </div>
+    </form>
 </section>
-<form #addMessage="ngForm" (ngSubmit)="submitForm(addMessage)">
-    <label for="newMessage">Add new message</label>
-        <textarea id="inputMessageText" name="inputMessageText" placeholder="Nachricht an ..."
-            style="height:200px" [(ngModel)]="inputMessageText"></textarea>
-    <button type="submit">send</button>
-</form>
 
 <!-- <h1>group messages / filtered by channel</h1>
 @for (message of firebase.allMessages; track $index) {
