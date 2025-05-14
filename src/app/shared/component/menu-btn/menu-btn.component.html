@@ -1,4 +1,4 @@
-<section>
-    <p>Workspace-Menü schließen</p>
+<section (click)="onToggleClick()" [ngClass]="{'open': isDevspaceOpen, 'closed': !isDevspaceOpen}">
+    <p>{{isDevspaceOpen ?'Workspace-Menü schließen' : 'Workspace-Menü öffnen' }}</p>
     <span class="menu-icon"></span>
 </section>

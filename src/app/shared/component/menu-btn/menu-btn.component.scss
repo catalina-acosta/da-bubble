@@ -26,7 +26,21 @@ section {
     color: #444DF2;
     font-weight: 700;
   }
-}
-section:hover .menu-icon {
-  background-image: url('././../../../../../public/assets/icon/menu_c_hover.svg');
+
+  
+  &.open .menu-icon {
+    background-image: url('././../../../../../public/assets/icon/menu_c_default.svg');
+  }
+
+  &.closed .menu-icon {
+   background-image: url('././../../../../../public/assets/icon/menu_o_default.svg');
+  }
+
+  &.open:hover .menu-icon {
+   background-image: url('././../../../../../public/assets/icon/menu_c_hover.svg');
+  }
+
+  &.closed:hover .menu-icon {
+    background-image: url('././../../../../../public/assets/icon/menu_o_hover.png');
+  }
 }
