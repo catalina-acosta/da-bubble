@@ -121,4 +121,11 @@ async logoutUser() {
   editDialog(){
     this.editDialogisClicked =true;
   }
+
+  onUserUpdated(updatedUser: UserInterface) {
+  if (this.currentUser && this.currentUser.id === updatedUser.id) {
+    this.currentUser.fullname = updatedUser.fullname;
+  }
+}
+
 }
