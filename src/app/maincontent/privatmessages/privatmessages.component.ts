@@ -26,6 +26,7 @@ export class PrivatmessagesComponent {
     text: "",
     date: "",
     time: 0,
+    formattedTime: "",
     reactions: [
         {
             emoji: "",
@@ -39,8 +40,20 @@ export class PrivatmessagesComponent {
     const now = new Date();
   // Format date as YYYY-MM-DD
     this.newMessage.date = now.toISOString().split('T')[0];
+    console.log(this.newMessage.date);
     // Use Unix timestamp (milliseconds since epoch)
     this.newMessage.time = now.getTime();
+    console.log(this.newMessage.time);
+
+    // Format time as HH:mm
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const formattedTime = `${hours}:${minutes}`;
+
+    // Option 1: Add a new property
+    this.newMessage.formattedTime = formattedTime;
+    console.log(formattedTime);
+    
     
     this.newMessage.senderId = this.currentUserId;
     this.newMessage.receiverId = this.currentConversationPartnerId;
