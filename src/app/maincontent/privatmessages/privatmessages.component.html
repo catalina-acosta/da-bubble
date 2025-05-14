@@ -11,7 +11,7 @@
             <p>+3</p>
         </div>
     </div>
-    <div class="chat-wrapper">
+    <div class="chat-wrapper" #chatContainer>
         @for (message of firebase.allMessages; track $index) {
             @if(message.senderId == currentUserId || message.receiverId == currentUserId ) {
                 @if (message.receiverId == currentConversationPartnerId || message.senderId == currentConversationPartnerId) {

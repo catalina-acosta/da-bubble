@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FirebaseService } from '../../shared/services/firebase.service';
 import { MessageInterface } from '../../shared/message.interface';
 import { NgForm, FormsModule } from '@angular/forms';
+import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-privatmessages',
@@ -9,7 +10,8 @@ import { NgForm, FormsModule } from '@angular/forms';
   templateUrl: './privatmessages.component.html',
   styleUrl: './privatmessages.component.scss'
 })
-export class PrivatmessagesComponent {
+export class PrivatmessagesComponent implements AfterViewInit {
+  @ViewChild('chatContainer') private chatContainer!: ElementRef;
   firebase = inject(FirebaseService);
   currentUserId: string = '74izbWVB9XFaPrkOl2IW';
   currentConversationPartnerId: string = 'NsJ0o0lAuQVfQ7r28lRr';
@@ -18,7 +20,7 @@ export class PrivatmessagesComponent {
   inputMessageText: string = '';
   formSubmitted: boolean = false;
   newMessageAdded: boolean = false;
-
+  
   newMessage: MessageInterface = {
     senderId: "",
     receiverId: "",
@@ -28,13 +30,31 @@ export class PrivatmessagesComponent {
     time: 0,
     formattedTime: "",
     reactions: [
-        {
-            emoji: "",
-            counter: 0,
-        }
+      {
+        emoji: "",
+        counter: 0,
+      }
     ]
   }
+  
+  ngAfterViewInit() {
+    this.scrollToBottom();
+  }
 
+    ngOnChanges() {
+    this.scrollToBottom();
+  }
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+    } catch (err) {}
+  }
+  
   submitForm(ngform: NgForm) {
     console.log("form is submitted");
     const now = new Date();
