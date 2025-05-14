@@ -12,15 +12,19 @@ header {
   justify-content: space-between;
   padding: 15px 20px;
   gap: 15px;
-
+.logo_conent{
+  width: 38%;
+  margin: 0.8rem;
   .logo {
     width: 10rem;
   }
 }
+  
+}
 
 //SEACH
 .search_content {
-  width: 35rem;
+  width: 100%;
   position: relative;
 
   input {
@@ -96,15 +100,17 @@ header {
 
 .postion {
   top: 2rem;
-  left: 12.8rem;
+  left: 14.2rem;
 }
 
 // Profil Content
 .avatar_content {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   gap: 20px;
   cursor: pointer;
+  width: 37%;
 }
 
 .avatar_img {
@@ -267,13 +273,13 @@ header {
   cursor: default;
 }
 
-@media (max-width: 1160px) {
+@media (max-width: 1280px) {
   .avatar_name {
     display: none;
   }
   .postion {
     top: 2rem;
-    left: 2.4rem;
+    left: 12rem;
   }
 }
 
