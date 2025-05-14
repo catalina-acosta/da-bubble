@@ -82,6 +82,7 @@ export class FirebaseService {
           text: data.text,
           date: data.date,
           time: data.time,
+          formattedTime: data.formattedTime,
           reactions: data.reactions,
         });
       });

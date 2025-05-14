@@ -6,6 +6,7 @@ export interface MessageInterface {
     text: string;
     date: string;
     time: number;
+    formattedTime: string;
     reactions: [
         {
             emoji: string;
