@@ -12,37 +12,33 @@
         </div>
     </div>
     <div class="chat-wrapper" #chatContainer>
-        @for (message of firebase.allMessages; track $index) {
-            @if(message.senderId == currentUserId || message.receiverId == currentUserId ) {
-                @if (message.receiverId == currentConversationPartnerId || message.senderId == currentConversationPartnerId) {
-                    <div class="message-item">
+        @for (message of this.conversation; track $index) {
+            <div class="message-item" >
                 <div class="date">
                     <div class="line"></div>
                     <p>{{message.date}}</p>
                 </div>
-                <div class="message-wrapper">
-                    <div class="avatar-large"><img src="" alt=""></div>
-                    <div class="message-info-wrapper">
-                        <div class="name-and-time">
-                            @for (user of firebase.allUsersList; track $index) {
-                                @if (user.id == message.receiverId ) {
+                <div [ngClass]="message.senderId === currentUserId ? 'message-wrapper-right' : 'message-wrapper'">
+                    @for (user of firebase.allUsersList; track $index) {
+                        @if(user.id === message.senderId ) {
+                            <img class="avatar-large" [src]="user.avatar" alt="">
+                            <div class="message-info-wrapper">
+                                <div [ngClass]="message.senderId === currentUserId ? 'name-and-time-right' : 'name-and-time'">
                                     <p class="user-name">{{user.fullname}}</p>
-                                }
-                            }
-                            <p class="time">{{message.time}}</p>
-                        </div>
-                        <div class="message">
-                            <p>{{message.text}}</p>
-                        </div>
-                        <div class="threads">
-                            <p>zwei Antworten</p>
-                            <p>letze Antwort 14:50</p>
-                        </div>
-                    </div>
+                                    <p class="time">{{message.formattedTime}}</p>
+                                </div>
+                                <div [ngClass]="message.senderId === currentUserId ? 'message-right' : 'message'">
+                                    <p>{{message.text}}</p>
+                                </div>
+                                <div class="threads">
+                                    <p>zwei Antworten</p>
+                                    <p>letze Antwort 14:50</p>
+                                </div>
+                            </div>
+                        } 
+                    }
                 </div>
             </div>
-                }
-            }
         }
     </div>
     <form #addMessage="ngForm" (ngSubmit)="submitForm(addMessage)">
@@ -53,21 +49,10 @@
             <div class="buttons-wrapper">
                 <div class="left-btns">
                     <button><img src="./assets/icon/messages/sentiment_satisfied.svg" alt=""></button>
-                    <button ><img src="./assets/icon/messages/alternate_email.svg" alt=""></button>
+                    <button><img src="./assets/icon/messages/alternate_email.svg" alt=""></button>
                 </div>
                 <button type="submit"><img src="./assets/icon/messages/send.svg" alt=""></button>
             </div>
         </div>
     </form>
 </section>
-
-<!-- <h1>group messages / filtered by channel</h1>
-@for (message of firebase.allMessages; track $index) {
-    @if(message.channelId == currentChannel ) {
-            <p>{{message.text}}</p>
-    }
-}
-<h1>all users</h1>
-@for (user of firebase.allUsersList; track $index) {
-    <p>{{user.fullname}}</p>
-} -->

@@ -56,6 +56,7 @@ export class FirebaseService {
             channelId: element.channelId,
             text: element.text,
             date: element.date,
+            formattedTime: element.formattedTime,
             time: element.time,
             reactions: element.reactions,
           });
@@ -86,7 +87,7 @@ export class FirebaseService {
           reactions: data.reactions,
         });
       });
-      console.log(this.allMessages);
+      // console.log(this.allMessages);
       
       // return messagesList;
     } catch (error) {
