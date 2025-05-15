@@ -31,9 +31,9 @@ section {
 }
 
 .chat-wrapper {
-  overflow-y: auto;
-  max-height: 60vh; // or whatever fits your layout
-  /* ...other styles... */
+    overflow-y: auto;
+    max-height: 60vh; 
+    padding-top: 1rem;
 }
 
 .date {
