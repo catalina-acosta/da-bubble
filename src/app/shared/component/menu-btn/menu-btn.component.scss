@@ -1,0 +1,45 @@
+section {
+  display: flex;
+  align-items: center;
+  writing-mode: vertical-rl;
+  gap: 10px;
+  transform: rotate(180deg);
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 24px 0 0 24px;
+  position: absolute;
+  top: 50%;
+  box-shadow: -3px -1px 7px 0px rgba(0, 0, 0, 0.329);
+  z-index: 1;
+  font-weight: 700;
+  cursor: pointer;  
+  
+  .menu-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background: url('././../../../../../public/assets/icon/menu_c_default.svg') no-repeat center;
+  background-size: contain;
+}
+  
+  &.open .menu-icon {
+    background-image: url('././../../../../../public/assets/icon/menu_c_default.svg');
+  }
+
+  &.closed .menu-icon {
+   background-image: url('././../../../../../public/assets/icon/menu_o_default.svg');
+  }
+
+  &.open:hover .menu-icon {
+   background-image: url('././../../../../../public/assets/icon/menu_c_hover.svg');
+  }
+
+  &.closed:hover .menu-icon {
+    background-image: url('././../../../../../public/assets/icon/menu_o_hover.png');
+  }
+}
+
+  section:hover{
+    color: #444DF2;
+    font-weight: 700;
+  }

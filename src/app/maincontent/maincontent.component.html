@@ -1,6 +1,13 @@
 <app-header></app-header>
+
 <section>
-    <app-devspace></app-devspace>
+    <div class="main-content-center">
+    <app-menu-btn [isDevspaceOpen]="isDevspaceVisible" (toggle)="toggleDevspace()" ></app-menu-btn>
+    @if(isDevspaceVisible){
+        <app-devspace [class.hidden]="!isDevspaceVisible"></app-devspace>
+    }
+    
     <app-privatmessages></app-privatmessages>
     <app-thread></app-thread>
+    </div>
 </section>
