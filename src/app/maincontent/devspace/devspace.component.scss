@@ -1,8 +1,61 @@
 section {
-background-color: #fff;
+  background-color: #fff;
+  width: 100%;
+  height: 85vh;
+  border-radius: 24px;
+  padding: 2rem;
+  margin: 0.8rem;
+  cursor: context-menu;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .devspace_bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     width: 100%;
-    height: 85vh;
-    border-radius: 24px;
-    padding: 2rem;
-    margin: 0.8rem;
+
+    .logo_size {
+      width: 3rem;
+    }
+  }
+}
+
+.right {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.channel_bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.channel_dropdown {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  p {
+    padding-left: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+}
+
+.channels_content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .d_flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding-left: 30px;
+    cursor: pointer;
+  }
 }
