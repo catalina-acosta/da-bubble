@@ -22,20 +22,9 @@ section {
   }
 }
 
-p {
-  padding-left: 10px;
-  font-weight: 700;
-  font-size: 1.2rem;
-}
 .right {
   margin-left: auto;
   cursor: pointer;
-}
-
-.channels_content {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .channel_bar {
@@ -43,17 +32,30 @@ p {
   align-items: center;
   width: 100%;
 }
+
 .channel_dropdown {
   display: flex;
   align-items: center;
   cursor: pointer;
+
+  p {
+    padding-left: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
 }
 
-.d_flex {
+.channels_content {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 10px;
-  width: 100%;
-  padding-left: 30px;
-  cursor: pointer;
+
+  .d_flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding-left: 30px;
+    cursor: pointer;
+  }
 }
