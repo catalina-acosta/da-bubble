@@ -40,6 +40,7 @@ export class PrivatmessagesComponent implements AfterViewInit {
     ]
   };
 
+  //#region scroll down to input field logic
   async ngOnInit() {
     await this.firebase.getMessages();
     this.filterMessages();
@@ -63,6 +64,9 @@ export class PrivatmessagesComponent implements AfterViewInit {
     } catch (err) {}
   }
 
+  //#endregion
+
+  //#region filter Messages to display older messages on top and newest message at the bottom
   filterMessages() {
     if (this.firebase.allMessages && this.firebase.allMessages.length > 0) {
       this.conversation = [];
@@ -83,7 +87,9 @@ export class PrivatmessagesComponent implements AfterViewInit {
       this.conversation = [];
     }
   }
-  
+  //#endregion
+
+  //#region save new message - display instantly - clear form
   async submitForm(ngform: NgForm) {
     console.log("form is submitted");
     const now = new Date();
@@ -116,5 +122,13 @@ export class PrivatmessagesComponent implements AfterViewInit {
     this.formSubmitted = false;
     this.newMessageAdded = false;
   }
+  //#endregion
 
+  openEmoji() {
+    console.log("open emojis");
+  }
+
+  openContacts() {
+    console.log("opening contacts");
+  }
 }
