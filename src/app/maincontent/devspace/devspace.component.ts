@@ -6,22 +6,21 @@ import { UserInterface } from '../../shared/user.interface';
 @Component({
   selector: 'app-devspace',
   imports: [CommonModule],
-  standalone:true,
+  standalone: true,
   templateUrl: './devspace.component.html',
-  styleUrl: './devspace.component.scss'
+  styleUrl: './devspace.component.scss',
 })
 export class DevspaceComponent {
-firebase =inject(FirebaseService);
-allPersons: UserInterface[] = [];
-filteredPerson: UserInterface[] = []; 
+  firebase = inject(FirebaseService);
+  allPersons: UserInterface[] = [];
+  filteredPerson: UserInterface[] = [];
 
-ngOnInit():void {
-  this.loadUsers();
-}
+  ngOnInit(): void {
+    this.loadUsers();
+  }
 
-async loadUsers(){
- this.allPersons =await this.firebase.getUserList();
- this.filteredPerson = this.allPersons;
-}
-
+  async loadUsers() {
+    this.allPersons = await this.firebase.getUserList();
+    this.filteredPerson = this.allPersons;
+  }
 }
