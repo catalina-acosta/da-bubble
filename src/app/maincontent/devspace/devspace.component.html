@@ -93,14 +93,13 @@
   <div class="channels_content">
     <div class="groups_btn d_flex">
         <ul>
-      <li *ngFor="let person of filteredPerson">
-        <div class="avatar_content">
-          <div class="status_btn" [ngStyle]="{ 'background-color': person.status ? '#92c83e' : '#b7b7b7' }"></div>
-          <img [src]="'./' + person.avatar" [alt]="person.fullname">
-          <p>{{ person.fullname }}</p>
-      </div>
-</li>
-
+          <li *ngFor="let person of filteredPerson">
+            <div class="avatar_content">
+              <div class="status_btn" [ngStyle]="{ 'background-color': person.status ? '#92c83e' : '#b7b7b7' }"></div>
+             <img [src]="'./' + person.avatar" [alt]="person.fullname">
+              <p>{{ person.fullname }}</p>
+          </div>
+          </li>
         </ul>
     </div>
   </div>

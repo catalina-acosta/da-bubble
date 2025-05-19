@@ -68,8 +68,8 @@ section {
 .devspace_bar:hover svg path,
 .channel_dropdown:hover svg path,
 .channel_dropdown:hover p {
-  fill: #444DF2;
-  color: #444DF2;
+  fill: #444df2;
+  color: #444df2;
 }
 
 .channel_dropdown svg path,
@@ -79,12 +79,12 @@ section {
 }
 
 .channel_bar .btn_hover:hover svg path {
-  fill: #444DF2;
+  fill: #444df2;
 }
 .btn_hover {
   width: 25px;
   height: 25px;
-  border-radius: 50%;      
+  border-radius: 50%;
   transition: background-color 0.3s ease;
   transform: scale(1.1);
 }
@@ -97,12 +97,12 @@ section {
   transition: color 0.3s ease;
 }
 
-.add_channel_btn:hover{
-  color: #444DF2;
+.add_channel_btn:hover {
+  color: #444df2;
 }
 
-.add_channel_btn:hover svg{
-   transform: scale(1.1);
+.add_channel_btn:hover svg {
+  transform: scale(1.1);
 }
 
 .status_btn {
@@ -116,17 +116,15 @@ section {
   border-radius: 2rem;
 }
 
- ul {
+ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.avatar_content{
-display: flex;
-align-items: center;
-    gap: 15px;
-    padding-bottom: 15px;
-
-
+.avatar_content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 15px;
 }
