@@ -39,6 +39,7 @@ export class PrivatmessagesComponent implements AfterViewInit {
       }
     ]
   };
+  showReactionMenu: number | null = null;
 
   //#region scroll down to input field logic
   async ngOnInit() {
@@ -131,4 +132,19 @@ export class PrivatmessagesComponent implements AfterViewInit {
   openContacts() {
     console.log("opening contacts");
   }
+
+  addReaction(message: MessageInterface, emoji: string) {
+  // Find if this emoji already exists
+  const reaction = message.reactions.find(r => r.emoji === emoji);
+  if (reaction) {
+    reaction.counter++;
+    console.log(message.reactions);
+    
+  } else {
+    message.reactions.push({ emoji, counter: 1 });
+    console.log(message.reactions);
+  }
+  // Optionally, save the updated message to your backend here
+  this.firebase.updateMessageReactions(); // Implement this in your service
+}
 }

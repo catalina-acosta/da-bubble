@@ -137,17 +137,27 @@ export class FirebaseService {
   }
 }
 
+
+async updateUserName(userId: string, fullname: string): Promise<void> {
+    try {
+      const userDocRef = doc(this.firebase, 'users', userId);
+      await setDoc(userDocRef, { fullname: fullname }, { merge: true });
+    } catch (error) {
+      console.error('Error updating user fullname:', error);
+    }
+  }
+
+  
   async addMessageToData(newMessage: MessageInterface) {
     await addDoc(collection(this.firebase, "messages"), newMessage);
   }
 
-async updateUserName(userId: string, fullname: string): Promise<void> {
-  try {
-    const userDocRef = doc(this.firebase, 'users', userId);
-    await setDoc(userDocRef, { fullname: fullname }, { merge: true });
-  } catch (error) {
-    console.error('Error updating user fullname:', error);
+  async updateMessageReactions( ) {
+    // const messageDocRef = doc(this.firebase, 'messages', messageId)
+    // await setDoc() {
+    console.log("function triggered");
+    
+    // }
+    
   }
-}
-
 }

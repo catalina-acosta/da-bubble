@@ -18,7 +18,10 @@
                     <div class="line"></div>
                     <p>{{message.date}}</p>
                 </div>
-                <div [ngClass]="message.senderId === currentUserId ? 'message-wrapper-right' : 'message-wrapper'">
+                <div [ngClass]="message.senderId === currentUserId ? 'message-wrapper-right' : 'message-wrapper'"
+                    (mouseenter)="showReactionMenu = $index"
+                    (mouseleave)="showReactionMenu = null">
+
                     @for (user of firebase.allUsersList; track $index) {
                         @if(user.id === message.senderId ) {
                             <img class="avatar-large" [src]="user.avatar" alt="">
@@ -37,6 +40,14 @@
                             </div>
                         } 
                     }
+                    @if(showReactionMenu === $index) {
+                        <div class="reaction-menu" >
+                            <span (click)="addReaction(message, '👍')">👍</span>
+                            <span (click)="addReaction(message, '❤️')">❤️</span>
+                            <span (click)="addReaction(message, '😂')">😂</span>
+                            <span (click)="addReaction(message, '🎉')">🎉</span>
+                        </div>
+                        }
                 </div>
             </div>
         }
