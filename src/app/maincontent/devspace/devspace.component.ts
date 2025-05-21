@@ -38,4 +38,8 @@ export class DevspaceComponent {
   openChannelDialog(){
     this.isClicked = true;
   }
+
+  closeDialog(){
+    this.isClicked =false;
+  }
 }

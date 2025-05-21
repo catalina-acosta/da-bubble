@@ -8,11 +8,13 @@
   </div>
 
   <!-- open channel dialog -->
-  @if(isClicked){
-    <div class="overlay">
-      <app-add-channeldialog></app-add-channeldialog>
+@if (isClicked) {
+  <div class="overlay" (click)="closeDialog()">
+    <div class="dialog-wrapper" (click)="$event.stopPropagation()">
+      <app-add-channeldialog (close)="isClicked = false"></app-add-channeldialog>
     </div>
-  }
+  </div>
+}
 
 <!-- channel -->
   <div class="channel_bar" >

@@ -160,7 +160,15 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
+
+   .dialog-wrapper {
+      display: flex;
+  align-items: center;
+  justify-content: center;
+  }
 }
+
+
 
 app-add-channeldialog{
   display: contents;

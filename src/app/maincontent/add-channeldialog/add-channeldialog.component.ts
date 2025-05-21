@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-add-channeldialog',
@@ -9,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './add-channeldialog.component.scss'
 })
 export class AddChanneldialogComponent {
+@Output() close= new EventEmitter<void>();
 
+closeDialog(){
+  this.close.emit();
+}
 }
