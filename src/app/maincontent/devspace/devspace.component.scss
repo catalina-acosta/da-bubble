@@ -107,12 +107,12 @@ section {
 
 .status_btn {
   position: absolute;
-  top: 1.8rem;
-  left: 2.5rem;
+  top: 2.3rem;
+  left: 3rem;
   z-index: 1;
-  width: 1rem;
-  height: 1rem;
-  border: 3px solid rgb(255 255 255);
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid rgb(255 255 255);
   border-radius: 2rem;
 }
 
@@ -126,5 +126,11 @@ ul {
   display: flex;
   align-items: center;
   gap: 15px;
-  padding-bottom: 15px;
+  margin-bottom: 15px;
+  padding: 3px 10px;
+  transition: 145ms ease;
+}
+.avatar_content:hover{
+  background-color: #444df217;
+  border-radius: 50px;
 }
