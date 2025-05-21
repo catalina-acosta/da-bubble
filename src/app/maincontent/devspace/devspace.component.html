@@ -9,9 +9,9 @@
 
 <!-- channel -->
 
-  <div class="channel_bar">
+  <div class="channel_bar" (click)="onToggleClickChannels()">
     <div class="channel_dropdown">
-        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="chevron-icon" [class.rotated]="!isChannelsVisible" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <mask id="mask0_235_344" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
         <rect width="30" height="30" fill="#D9D9D9"/>
         </mask>
@@ -50,7 +50,7 @@
   </div>
   </div>
 
-  <div class="channels_content">
+  <div class="channels_content" [class.hidden]="!isChannelsVisible">
     <div class="groups_btn d_flex">
         <img src="./assets/icon/tag.svg" alt="tag">
         <span>Entwicklerteam</span>
@@ -69,8 +69,8 @@
   </div>
 
 <!-- direktnachticht_content -->
-    <div class="channel_dropdown">
-         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="channel_dropdown" (click)="onToggleClick()">
+         <svg class="chevron-icon" [class.rotated]="!isAvatarContentVisible" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <mask id="mask0_235_344" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
         <rect width="30" height="30" fill="#D9D9D9"/>
         </mask>
@@ -90,7 +90,7 @@
         <p>Direktnachricht</p>
     </div>
 
-  <div class="channels_content">
+  <div class="channels_content" [class.hidden]="!isAvatarContentVisible">
     <div class="groups_btn d_flex">
         <ul>
           <li *ngFor="let person of filteredPerson">

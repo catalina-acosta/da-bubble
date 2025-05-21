@@ -134,3 +134,15 @@ ul {
   background-color: #444df217;
   border-radius: 50px;
 }
+
+.hidden {
+  display: none;
+}
+
+.chevron-icon {
+  transition: transform 0.3s ease;
+}
+
+.chevron-icon.rotated {
+  transform: rotate(-90deg);
+}

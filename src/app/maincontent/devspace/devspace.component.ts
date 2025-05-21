@@ -14,6 +14,8 @@ export class DevspaceComponent {
   firebase = inject(FirebaseService);
   allPersons: UserInterface[] = [];
   filteredPerson: UserInterface[] = [];
+  isAvatarContentVisible: boolean = true;
+  isChannelsVisible: boolean = true;
 
   ngOnInit(): void {
     this.loadUsers();
@@ -22,5 +24,12 @@ export class DevspaceComponent {
   async loadUsers() {
     this.allPersons = await this.firebase.getUserList();
     this.filteredPerson = this.allPersons;
+  }
+
+  onToggleClickChannels() {
+    this.isChannelsVisible = !this.isChannelsVisible;
+  }
+  onToggleClick() {
+    this.isAvatarContentVisible = !this.isAvatarContentVisible;
   }
 }
