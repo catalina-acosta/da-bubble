@@ -43,9 +43,9 @@
                     @if(showReactionMenu === $index) {
                         <div class="reaction-menu" >
                             <span (click)="addReaction(message, '👍')">👍</span>
-                            <span (click)="addReaction(message, '❤️')">❤️</span>
-                            <span (click)="addReaction(message, '😂')">😂</span>
-                            <span (click)="addReaction(message, '🎉')">🎉</span>
+                            <span (click)="addReaction(message, '✅')">✅</span>
+                            <span (click)="openEmojiMenu(message)"><img src="./assets/icon/messages/add_reaction.svg" alt=""></span>
+                            <span (click)="addThread(message)"><img src="./assets/icon/messages/comment.svg" alt=""></span>
                         </div>
                         }
                 </div>

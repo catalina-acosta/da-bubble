@@ -51,13 +51,13 @@ export class PrivatmessagesComponent implements AfterViewInit {
     this.scrollToBottom();
   }
 
-    ngOnChanges() {
-    this.scrollToBottom();
-  }
+  //   ngOnChanges() {
+  //   this.scrollToBottom();
+  // }
 
-  ngAfterViewChecked() {
-    this.scrollToBottom();
-  }
+  // ngAfterViewChecked() {
+  //   this.scrollToBottom();
+  // }
 
   scrollToBottom(): void {
     try {
@@ -112,6 +112,7 @@ export class PrivatmessagesComponent implements AfterViewInit {
       this.filterMessages();                                 // Update the conversation array
       this.newMessageAdded = true;
       this.clearFormular(ngform);
+      setTimeout(() => this.scrollToBottom(), 0);
     }
 }
   clearFormular(ngform: NgForm) {
@@ -134,17 +135,28 @@ export class PrivatmessagesComponent implements AfterViewInit {
   }
 
   addReaction(message: MessageInterface, emoji: string) {
-  // Find if this emoji already exists
-  const reaction = message.reactions.find(r => r.emoji === emoji);
-  if (reaction) {
-    reaction.counter++;
-    console.log(message.reactions);
-    
-  } else {
-    message.reactions.push({ emoji, counter: 1 });
-    console.log(message.reactions);
+    // Find if this emoji already exists
+    const reaction = message.reactions.find(r => r.emoji === emoji);
+    if (reaction) {
+      reaction.counter++;
+      console.log(message.reactions);
+      console.log(message.text);
+      
+      
+    } else {
+      message.reactions.push({ emoji, counter: 1 });
+      console.log(message.reactions);
+    }
+    // Optionally, save the updated message to your backend here
+    this.firebase.updateMessageReactions(); // Implement this in your service
   }
-  // Optionally, save the updated message to your backend here
-  this.firebase.updateMessageReactions(); // Implement this in your service
-}
+
+  openEmojiMenu(message: MessageInterface) {
+    console.log("opening emoji menu");
+    
+  }
+
+  addThread(message: MessageInterface){
+    console.log("adding thread");
+  }
 }
