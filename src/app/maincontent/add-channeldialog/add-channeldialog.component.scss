@@ -1,0 +1,59 @@
+section {
+  background-color: #fff;
+  border-radius: 20px;
+  padding:30px;
+  width: 70%;
+}
+
+.headline {
+  display: flex;
+  justify-content: space-between;
+
+  .close_btn {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    transform: scale(1.1);
+    cursor: pointer;
+
+    &:hover {
+      background-color: #444df231;
+      fill: #444df2;
+    }
+    &:hover path {
+      fill: #444df2;
+    }
+  }
+}
+
+.channel_form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+
+  input {
+    outline: none;
+    padding: 14px 20px;
+    border-radius: 50px;
+    border: 1px solid #444df2;
+  }
+}
+
+button {
+  background-color: #444df2;
+  color: #fff;
+  transition: 145ms ease-in-out;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: auto;
+  margin-bottom: 25px;
+
+  &:hover{
+    background-color: rgba(68, 77, 242, 0.6862745098);
+  }
+}
