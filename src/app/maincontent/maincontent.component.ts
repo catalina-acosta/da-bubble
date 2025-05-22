@@ -12,7 +12,7 @@ import { MenuBtnComponent } from '../shared/component/menu-btn/menu-btn.componen
   styleUrl: './maincontent.component.scss'
 })
 export class MaincontentComponent {
-  isDevspaceVisible =true;
+  isDevspaceVisible:boolean =true;
 
   toggleDevspace(){
     this.isDevspaceVisible = !this.isDevspaceVisible;
