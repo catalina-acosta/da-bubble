@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-channeldialog',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   standalone:true,
   templateUrl: './add-channeldialog.component.html',
   styleUrl: './add-channeldialog.component.scss'
@@ -11,7 +12,19 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class AddChanneldialogComponent {
 @Output() close= new EventEmitter<void>();
 
+channelName = {
+  channelId: "",
+  description: "",
+}
+
 closeDialog(){
   this.close.emit();
+}
+
+createChannel(ngform: NgForm){
+  if(ngform.valid && ngform.submitted){
+    console.log(this.channelName);
+  }
+
 }
 }
