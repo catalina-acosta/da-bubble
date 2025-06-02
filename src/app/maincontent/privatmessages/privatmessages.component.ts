@@ -147,8 +147,8 @@ export class PrivatmessagesComponent implements AfterViewInit {
       message.reactions.push({ emoji, counter: 1 });
       console.log(message.reactions);
     }
-    // Optionally, save the updated message to your backend here
-    this.firebase.updateMessageReactions(); // Implement this in your service
+
+    this.firebase.updateMessageReactions(); 
   }
 
   openEmojiMenu(message: MessageInterface) {
