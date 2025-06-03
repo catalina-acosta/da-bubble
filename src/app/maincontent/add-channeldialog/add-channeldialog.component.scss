@@ -44,7 +44,7 @@ form {
 
   input {
     outline: none;
-    padding: 14px 20px;
+    padding: 14px 33px;
     border-radius: 50px;
     border: 1px solid #444df2;
   }
@@ -87,5 +87,29 @@ form {
   &:hover {
     background-color: rgba(68, 77, 242, 0.6862745098);
   }
+}
+
+// hash
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.hash-icon {
+  position: absolute;
+  left: 8px;
+  top: 33px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 2;
+}
+
+.input-wrapper input {
+  padding-left: 33px; 
+}
+
+.input-wrapper:focus-within .hash-icon {
+  opacity: 0.6;
 }
 

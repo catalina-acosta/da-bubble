@@ -27,11 +27,7 @@ createChannel(ngform: NgForm){
   }
 }
 
-prependHash(){
-  if (!this.channelName.channelId.startsWith('#')) {
-    this.channelName.channelId = '#';
-  } 
-}
+
 
 
 }
