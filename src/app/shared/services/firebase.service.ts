@@ -139,7 +139,6 @@ export class FirebaseService {
   }
 }
 
-
 async updateUserName(userId: string, fullname: string): Promise<void> {
     try {
       const userDocRef = doc(this.firebase, 'users', userId);
@@ -160,6 +159,31 @@ async updateUserName(userId: string, fullname: string): Promise<void> {
     console.log("function triggered");
     
     // }
-    
   }
+
+  async addChannelToData(newChannel: ChannelInterface) {
+    await addDoc(collection(this.firebase, "channels"), newChannel);
+  }
+
+  async getChannels(): Promise<ChannelInterface[]> { 
+    try {
+      const channelsRef = collection (this.firebase, "channels");
+      const channelsSpatshot=await getDocs(channelsRef);
+      this.allChannels = [];
+
+      channelsSpatshot.forEach(doc => {
+        const data = doc.data() as ChannelInterface; // <-- Typecast hinzufügen
+        this.allChannels.push({
+          id: doc.id,
+          channelName: data.channelName,
+          description: data.description,
+        });
+      } );
+      return this.allChannels;  
+    } catch (error) {
+      console.error("Error fetching channels: ", error);
+      return [];
+    }
+  }
+
 }
