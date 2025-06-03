@@ -47,6 +47,7 @@
         required
         #channelId="ngModel"
          [class.invalid-input]="!channelId.valid && channelId.touched"
+         (focus)="prependHash()"
       />
 
 
