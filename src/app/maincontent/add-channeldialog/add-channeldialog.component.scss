@@ -1,7 +1,7 @@
 section {
   background-color: #fff;
   border-radius: 20px;
-  padding:30px;
+  padding: 30px;
   width: 70%;
 }
 
@@ -27,11 +27,20 @@ section {
   }
 }
 
-.channel_form {
+form {
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding-top: 20px;
+
+  label{
+    font-weight: 700;
+  }
+}
+
+.channel_form {
+  display: flex;
+  flex-direction: column;
 
   input {
     outline: none;
@@ -40,6 +49,16 @@ section {
     border: 1px solid #444df2;
   }
 }
+
+.invalid-input {
+   border: 1px solid rgba(255, 0, 0, 0.767) !important;
+  color: rgba(255, 0, 0, 0.747);
+  &::placeholder {
+    color: red;
+    opacity: 1;
+  }
+}
+
 
 button {
   background-color: #444df2;
@@ -53,7 +72,7 @@ button {
   margin-left: auto;
   margin-bottom: 25px;
 
-  &:hover{
+  &:hover {
     background-color: rgba(68, 77, 242, 0.6862745098);
   }
 }
