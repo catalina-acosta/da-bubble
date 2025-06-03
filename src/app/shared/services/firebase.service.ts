@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { users, messages } from './dummyData'
-import { addDoc, collection, doc, Firestore, getDocs, setDoc } from '@angular/fire/firestore';
+import { addDoc, collection, doc, Firestore, getDocs, onSnapshot, setDoc } from '@angular/fire/firestore';
 import { UserInterface } from '../user.interface';
 import { MessageInterface } from '../message.interface';
 import { user } from '@angular/fire/auth';
@@ -24,6 +24,7 @@ export class FirebaseService {
     // this.initializeMessages();
     this.getMessages();
     this.getUserList();
+    this.getChannels();
   }
 
     // #region vorlage 
@@ -165,25 +166,20 @@ async updateUserName(userId: string, fullname: string): Promise<void> {
     await addDoc(collection(this.firebase, "channels"), newChannel);
   }
 
-  async getChannels(): Promise<ChannelInterface[]> { 
-    try {
-      const channelsRef = collection (this.firebase, "channels");
-      const channelsSpatshot=await getDocs(channelsRef);
-      this.allChannels = [];
+ getChannels(): void { 
+ const channelsRef = collection(this.firebase, "channels");
 
-      channelsSpatshot.forEach(doc => {
-        const data = doc.data() as ChannelInterface; // <-- Typecast hinzufügen
-        this.allChannels.push({
-          id: doc.id,
-          channelName: data.channelName,
-          description: data.description,
-        });
-      } );
-      return this.allChannels;  
-    } catch (error) {
-      console.error("Error fetching channels: ", error);
-      return [];
-    }
-  }
+  onSnapshot(channelsRef, (snapshot) => {
+    this.allChannels = [];
+    snapshot.forEach(doc => {
+      const data = doc.data() as ChannelInterface;
+      this.allChannels.push({
+        id: doc.id,
+        channelName: data.channelName,
+        description: data.description,
+      });
+    });
+  });
+}
 
 }

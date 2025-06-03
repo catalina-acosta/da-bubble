@@ -54,11 +54,11 @@
       <input
         type="text"
         name="channelId"
-        [(ngModel)]="channelName.channelId"
-        [placeholder]=" !channelId.valid && channelId.touched ? 'Bitte gib einen Channel-Namen ein' : 'z.B. #Marketing'"
+        [(ngModel)]="channelCreation.channelName"
+        [placeholder]=" !channelName.valid && channelName.touched ? 'Bitte gib einen Channel-Namen ein' : 'z.B. #Marketing'"
         required
-        #channelId="ngModel"
-         [class.invalid-input]="!channelId.valid && channelId.touched"
+        #channelName="ngModel"
+         [class.invalid-input]="!channelName.valid && channelName.touched"
         
       />
   </div>
@@ -67,7 +67,7 @@
       <input
         type="text"
         name="description"
-        [(ngModel)]="channelName.description"
+        [(ngModel)]="channelCreation.description"
         [placeholder]="'Dein Text hier'"
         
       />

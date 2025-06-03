@@ -125,7 +125,7 @@
 
   <!-- channel  dropdown-->
   <div class="channels_content" [class.hidden]="!isChannelsVisible">
-    @for(channels of channels; track $index){
+    @for(channels of firebase.allChannels; track $index){
     <div class="channel_groups d_flex">
       <svg
         width="24"
