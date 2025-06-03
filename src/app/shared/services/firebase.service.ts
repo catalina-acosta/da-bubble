@@ -4,6 +4,7 @@ import { addDoc, collection, doc, Firestore, getDocs, setDoc } from '@angular/fi
 import { UserInterface } from '../user.interface';
 import { MessageInterface } from '../message.interface';
 import { user } from '@angular/fire/auth';
+import { ChannelInterface } from '../channels.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class FirebaseService {
   allUsers: UserInterface[] = []; 
   allMessages: MessageInterface[] = [];
   allUsersList: UserInterface[] = []; 
+  allChannels: ChannelInterface[] = []; // Liste für Channels, falls benötigt
 
   constructor() { 
     // this.initializeUsers();

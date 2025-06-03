@@ -13,20 +13,9 @@ import { AddChanneldialogComponent } from "../add-channeldialog/add-channeldialo
 })
 export class DevspaceComponent {
   firebase = inject(FirebaseService);
-  allPersons: UserInterface[] = [];
-  filteredPerson: UserInterface[] = [];
   isAvatarContentVisible: boolean = true;
   isChannelsVisible: boolean = true;
   isClicked:boolean = false;
-
-  ngOnInit(): void {
-    this.loadUsers();
-  }
-
-  async loadUsers() {
-    this.allPersons = await this.firebase.getUserList();
-    this.filteredPerson = this.allPersons;
-  }
 
   onToggleClickChannels() {
     this.isChannelsVisible = !this.isChannelsVisible;
