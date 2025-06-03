@@ -58,9 +58,21 @@ form {
     opacity: 1;
   }
 }
+.disabled-btn {
+  background-color: #444df259;
+  color: #fff;
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+    padding: 10px 25px;
+  border-radius: 25px;
+   font-weight: 700;
+  font-size: 1rem;
+  margin-left: auto;
+  margin-bottom: 25px;
+}
 
-
-button {
+.enabled-btn {
   background-color: #444df2;
   color: #fff;
   transition: 145ms ease-in-out;
@@ -76,3 +88,4 @@ button {
     background-color: rgba(68, 77, 242, 0.6862745098);
   }
 }
+

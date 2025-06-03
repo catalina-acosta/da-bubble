@@ -59,7 +59,12 @@
         
       />
 
-      <button type="submit" value="submit">Erstellen</button>
+      <button type="submit"
+      [disabled]="!channelForm.valid"
+      [ngClass]="{
+        'enabled-btn': channelForm.valid,
+        'disabled-btn': !channelForm.valid
+      }">Erstellen</button>
     </form>
 
   </div>
