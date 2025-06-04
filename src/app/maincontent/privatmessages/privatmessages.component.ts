@@ -33,10 +33,7 @@ export class PrivatmessagesComponent implements AfterViewInit {
     time: 0,
     formattedTime: "",
     reactions: [
-      {
-        emoji: "",
-        counter: 0,
-      }
+      { emoji: '', counter: 0 }
     ]
   };
   showReactionMenu: number | null = null;
@@ -75,9 +72,9 @@ export class PrivatmessagesComponent implements AfterViewInit {
         const isBetweenUsers =
           (message.senderId === this.currentUserId && message.receiverId === this.currentConversationPartnerId) ||
           (message.senderId === this.currentConversationPartnerId && message.receiverId === this.currentUserId);
-
+        // checks if a message already exists in the array to not show duplicate messages
         const alreadyExists = this.conversation.some(m => m.id === message.id);
-
+        // if the message has been written between the 2 users and is not already exist in the conversation it will be pushed in the conversation array
         if (isBetweenUsers && !alreadyExists) {
           this.conversation.push(message);
         }
@@ -148,7 +145,11 @@ export class PrivatmessagesComponent implements AfterViewInit {
       console.log(message.reactions);
     }
 
-    this.firebase.updateMessageReactions(); 
+    if (message.id) {
+      this.firebase.updateMessageReactions(message.id, message); 
+    } else {
+      console.error('Message id is undefined or not a string:', message.id);
+    }
   }
 
   openEmojiMenu(message: MessageInterface) {
