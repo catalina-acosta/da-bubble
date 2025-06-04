@@ -120,6 +120,15 @@ section {
     }
 }
 
+.reaction-counter-box {
+    display: flex;
+    background-color: white;
+    border: 1px solid rgba(128, 128, 128, 0.337254902);
+    border-radius: 0.88rem;
+    padding: 0 1rem;
+}
+
+
 .reaction-menu {
     position: absolute;
     background: #fff;
