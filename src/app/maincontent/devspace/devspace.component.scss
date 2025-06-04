@@ -50,12 +50,19 @@ section {
   flex-direction: column;
   gap: 10px;
 
+  .channel_groups:hover,
+  .channel_groups:focus,
+  .channel_groups:hover svg path {
+    background-color: #444df231;
+    border-radius: 10px;
+    fill: #444df2;
+  }
+
   .d_flex {
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 100%;
-    padding-left: 30px;
+    margin-left: 30px;
     cursor: pointer;
   }
 }
@@ -130,7 +137,7 @@ ul {
   padding: 3px 10px;
   transition: 145ms ease;
 }
-.avatar_content:hover{
+.avatar_content:hover {
   background-color: #444df217;
   border-radius: 50px;
 }
@@ -155,21 +162,19 @@ ul {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 9;
   display: flex;
   align-items: center;
   justify-content: center;
 
-   .dialog-wrapper {
-      display: flex;
-  align-items: center;
-  justify-content: center;
+  .dialog-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-
-
-app-add-channeldialog{
+app-add-channeldialog {
   display: contents;
 }

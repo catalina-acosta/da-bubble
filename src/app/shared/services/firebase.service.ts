@@ -1,9 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { users, messages } from './dummyData'
-import { addDoc, collection, doc, Firestore, getDocs, setDoc, updateDoc } from '@angular/fire/firestore';
+import { addDoc, collection, doc, Firestore, getDocs, setDoc, updateDoc, onSnapshot } from '@angular/fire/firestore';
 import { UserInterface } from '../user.interface';
 import { MessageInterface } from '../message.interface';
 import { user } from '@angular/fire/auth';
+import { ChannelInterface } from '../channels.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class FirebaseService {
   allUsers: UserInterface[] = []; 
   allMessages: MessageInterface[] = [];
   allUsersList: UserInterface[] = []; 
+  allChannels: ChannelInterface[] = []; // Liste für Channels, falls benötigt
 
   constructor() { 
     // this.initializeUsers();
@@ -22,6 +24,7 @@ export class FirebaseService {
     // this.initializeMessages();
     this.getMessages();
     this.getUserList();
+    this.getChannels();
   }
 
     // #region vorlage 
@@ -137,7 +140,6 @@ export class FirebaseService {
   }
 }
 
-
 async updateUserName(userId: string, fullname: string): Promise<void> {
     try {
       const userDocRef = doc(this.firebase, 'users', userId);
@@ -158,4 +160,25 @@ async updateUserName(userId: string, fullname: string): Promise<void> {
     });
     console.log("message updated");
   }
+
+  async addChannelToData(newChannel: ChannelInterface) {
+    await addDoc(collection(this.firebase, "channels"), newChannel);
+  }
+
+ getChannels(): void { 
+ const channelsRef = collection(this.firebase, "channels");
+
+  onSnapshot(channelsRef, (snapshot) => {
+    this.allChannels = [];
+    snapshot.forEach(doc => {
+      const data = doc.data() as ChannelInterface;
+      this.allChannels.push({
+        id: doc.id,
+        channelName: data.channelName,
+        description: data.description,
+      });
+    });
+  });
+}
+
 }

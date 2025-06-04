@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { FirebaseService } from '../../shared/services/firebase.service';
 
 @Component({
   selector: 'app-add-channeldialog',
@@ -11,9 +12,10 @@ import { FormsModule, NgForm } from '@angular/forms';
 })
 export class AddChanneldialogComponent {
 @Output() close= new EventEmitter<void>();
+firebase = inject(FirebaseService);
 
-channelName = {
-  channelId: "",
+channelCreation = {
+  channelName: "",
   description: "",
 }
 
@@ -21,10 +23,17 @@ closeDialog(){
   this.close.emit();
 }
 
-createChannel(ngform: NgForm){
+async createChannel(ngform: NgForm){
   if(ngform.valid && ngform.submitted){
-    console.log(this.channelName);
+    // console.log(this.channelCreation);
+    try {
+      await this.firebase.addChannelToData(this.channelCreation); 
+      this.closeDialog();
+      ngform.resetForm();
+    } catch(error) {
+      console.error("Error creating channel: ", error);
+    }
   }
-
 }
+
 }
