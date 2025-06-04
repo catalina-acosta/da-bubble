@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { users, messages } from './dummyData'
-import { addDoc, collection, doc, Firestore, getDocs, setDoc } from '@angular/fire/firestore';
+import { addDoc, collection, doc, Firestore, getDocs, setDoc, updateDoc } from '@angular/fire/firestore';
 import { UserInterface } from '../user.interface';
 import { MessageInterface } from '../message.interface';
 import { user } from '@angular/fire/auth';
@@ -152,12 +152,10 @@ async updateUserName(userId: string, fullname: string): Promise<void> {
     await addDoc(collection(this.firebase, "messages"), newMessage);
   }
 
-  async updateMessageReactions( ) {
-    // const messageDocRef = doc(this.firebase, 'messages', messageId)
-    // await setDoc() {
-    console.log("function triggered");
-    
-    // }
-    
+  async updateMessageReactions(id: string, data: MessageInterface ) {
+    await updateDoc(doc(this.firebase, "messages", id), {
+      reactions: data.reactions,
+    });
+    console.log("message updated");
   }
 }
