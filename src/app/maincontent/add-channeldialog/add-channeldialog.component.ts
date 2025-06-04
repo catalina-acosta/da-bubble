@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { FirebaseService } from '../../shared/services/firebase.service';
+import { user } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-add-channeldialog',
@@ -17,6 +18,8 @@ firebase = inject(FirebaseService);
 channelCreation = {
   channelName: "",
   description: "",
+  userCreators: "",
+  members: [] as string[] 
 }
 
 closeDialog(){
@@ -25,7 +28,12 @@ closeDialog(){
 
 async createChannel(ngform: NgForm){
   if(ngform.valid && ngform.submitted){
+    const currentUser = this.firebase.getCurrentUser();
     // console.log(this.channelCreation);
+
+    if (currentUser) {
+      this.channelCreation.userCreators = currentUser.id;
+    }
     try {
       await this.firebase.addChannelToData(this.channelCreation); 
       this.closeDialog();

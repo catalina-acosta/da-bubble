@@ -3,7 +3,6 @@ import { users, messages } from './dummyData'
 import { addDoc, collection, doc, Firestore, getDocs, setDoc, updateDoc, onSnapshot } from '@angular/fire/firestore';
 import { UserInterface } from '../user.interface';
 import { MessageInterface } from '../message.interface';
-import { user } from '@angular/fire/auth';
 import { ChannelInterface } from '../channels.interface';
 
 @Injectable({
@@ -17,6 +16,7 @@ export class FirebaseService {
   allMessages: MessageInterface[] = [];
   allUsersList: UserInterface[] = []; 
   allChannels: ChannelInterface[] = []; // Liste für Channels, falls benötigt
+  currentUser: UserInterface | null = null;
 
   constructor() { 
     // this.initializeUsers();
@@ -70,6 +70,14 @@ export class FirebaseService {
       }
     }
   //#endregion
+
+  setCurrentUser(user: UserInterface) {
+    this.currentUser = user;
+  }
+
+  getCurrentUser(): UserInterface | null {
+    return this.currentUser;
+  }
 
   async getMessages() {
     try {
@@ -176,6 +184,8 @@ async updateUserName(userId: string, fullname: string): Promise<void> {
         id: doc.id,
         channelName: data.channelName,
         description: data.description,
+        userCreators: data.userCreators,
+        members: data.members || []
       });
     });
   });
