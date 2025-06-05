@@ -124,8 +124,22 @@ section {
     display: flex;
     background-color: white;
     border: 1px solid rgba(128, 128, 128, 0.337254902);
-    border-radius: 0.88rem;
-    padding: 0 1rem;
+    border-radius: 0.5rem;
+    padding: 0 0.5rem;
+}
+
+.message-reactions-threads-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    p {
+        font-size: 14px;
+    }
+}
+
+.reactions-wrapper {
+    display: flex;
+    gap: 0.3rem;
 }
 
 
