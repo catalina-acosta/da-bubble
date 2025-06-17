@@ -43,7 +43,8 @@ export class HeaderComponent {
   async loginUser() {
   if (this.currentUser) {
     await this.firebase.updateUserStatus(this.currentUser.id, true);
-    this.currentUser.status = true; // Lokale Anzeige auch aktualisieren
+     this.firebase.setCurrentUser(this.currentUser); 
+    this.currentUser.status = true;
   }
 }
 
