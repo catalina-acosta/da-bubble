@@ -249,7 +249,7 @@
       <ul>
         @for(person of firebase.allUsersList; track $index){
         <li>
-          <div class="avatar_content">
+          <div class="avatar_content" (click)="openPrivateConversation(person.id)">
             <div
               class="status_btn"
               [ngStyle]="{
