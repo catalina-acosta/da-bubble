@@ -17,6 +17,15 @@
             <h2>Neue Nachricht</h2>
             <input class="search-bar" type="text" placeholder="An: #channel, oder @jemand oder E-Mail Adresse">
         </div> 
+    } @else if (currentConversationPartnerId) {
+        <div class="private-bar">
+            @for (user of firebase.allUsersList; track $index) {
+                @if(currentConversationPartnerId === user.id) {
+                    <img class="avatar-large" [src]="user.avatar" alt="">
+                    <h2>{{user.fullname}}</h2>
+                }
+            }
+        </div> 
     }
 
     <div class="chat-wrapper" #chatContainer>

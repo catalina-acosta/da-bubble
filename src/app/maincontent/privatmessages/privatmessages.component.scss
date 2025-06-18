@@ -47,6 +47,12 @@ section {
     margin-bottom: 1rem;
 }
 
+.private-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .chat-wrapper {
     overflow-y: auto;
     max-height: 60vh; 
