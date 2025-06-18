@@ -12,6 +12,7 @@
         </div>
     </div>
     <div class="chat-wrapper" #chatContainer>
+        <div>{{currentConversationPartnerId}}</div>
         @for (message of this.conversation; track $index) {
             <div class="message-item" >
                 <div class="date">

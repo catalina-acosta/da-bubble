@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input, SimpleChanges } from '@angular/core';
 import { FirebaseService } from '../../shared/services/firebase.service';
 import { MessageInterface } from '../../shared/message.interface';
 import { NgForm, FormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ export class PrivatmessagesComponent implements AfterViewInit {
   @ViewChild('chatContainer') private chatContainer!: ElementRef;
   firebase = inject(FirebaseService);
   currentUserId: string = '74izbWVB9XFaPrkOl2IW';
-  currentConversationPartnerId: string = 'gGUdTt5YJBczhJi2tZTe';
+  @Input() currentConversationPartnerId: string = '';
   currentCPAvatar: string = "";
   currentChannel: string = 'testChannel';
   currentUserName: string = 'Felix';
@@ -46,11 +46,15 @@ export class PrivatmessagesComponent implements AfterViewInit {
   
   ngAfterViewInit() {
     this.scrollToBottom();
+    
   }
 
-  //   ngOnChanges() {
-  //   this.scrollToBottom();
-  // }
+ngOnChanges(changes: SimpleChanges) {
+    if (changes['currentConversationPartnerId'] && !changes['currentConversationPartnerId'].firstChange) {
+      this.filterMessages();
+      setTimeout(() => this.scrollToBottom(), 0);
+    }
+  }
 
   // ngAfterViewChecked() {
   //   this.scrollToBottom();
@@ -80,7 +84,6 @@ export class PrivatmessagesComponent implements AfterViewInit {
         }
       });
       this.conversation.sort((a, b) => a.time - b.time);
-      console.log(this.conversation);
     } else {
       this.conversation = [];
     }

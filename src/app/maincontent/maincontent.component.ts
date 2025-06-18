@@ -13,7 +13,8 @@ import { MenuBtnComponent } from '../shared/component/menu-btn/menu-btn.componen
 })
 export class MaincontentComponent {
   isDevspaceVisible:boolean =true;
-
+  selectedPartnerId: string ="default"; 
+  
   toggleDevspace(){
     this.isDevspaceVisible = !this.isDevspaceVisible;
   }

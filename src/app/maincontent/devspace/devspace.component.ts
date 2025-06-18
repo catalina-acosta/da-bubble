@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { FirebaseService } from '../../shared/services/firebase.service';
 import { AddChanneldialogComponent } from "../add-channeldialog/add-channeldialog.component";
 import { ChannelInterface } from '../../shared/channels.interface';
@@ -17,6 +17,7 @@ export class DevspaceComponent implements OnInit{
   isChannelsVisible: boolean = true;
   isClicked:boolean = false;
   channels: ChannelInterface[] =[];
+  @Output() conversationPartnerId = new EventEmitter<string>();
 
   ngOnInit(): void {
     this.firebase.getChannels();
@@ -34,5 +35,9 @@ export class DevspaceComponent implements OnInit{
 
   closeDialog(){
     this.isClicked =false;
+  }
+
+  openPrivateConversation(id: string) {
+    this.conversationPartnerId.emit(id);
   }
 }
