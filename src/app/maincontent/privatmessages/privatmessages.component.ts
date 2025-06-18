@@ -17,7 +17,7 @@ export class PrivatmessagesComponent implements AfterViewInit {
   currentUserId: string = '74izbWVB9XFaPrkOl2IW';
   @Input() currentConversationPartnerId: string = '';
   currentCPAvatar: string = "";
-  currentChannel: string = 'testChannel';
+  currentChannel: string = '';
   currentUserName: string = 'Felix';
   currentUserAvatar: string = "";
   inputMessageText: string = '';

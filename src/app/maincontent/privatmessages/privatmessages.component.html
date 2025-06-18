@@ -1,18 +1,24 @@
 <section>
-    <div class="channel-bar">
-        <div class="dropdown-channel">
-            <p>#channel name</p>
+    @if(currentChannel != '') {
+        <div class="channel-bar">
+            <div class="dropdown-channel">
+                <p>#channel name</p>
+            </div>
+            <div class="avatar-wrapper">
+                <div class="avatar"></div>
+                <div class="avatar"></div>
+                <div class="avatar"></div>
+                <div class="avatar add-icon"></div>
+                <p>+3</p>
+            </div>
         </div>
-        <div class="avatar-wrapper">
-            <div class="avatar"></div>
-            <div class="avatar"></div>
-            <div class="avatar"></div>
-            <div class="avatar add-icon"></div>
-            <p>+3</p>
-        </div>
-    </div>
+    } @else if (currentChannel == '' && !currentConversationPartnerId) {
+        <div class="channel-bar">
+            <div>send a private message</div>
+        </div> 
+    }
+
     <div class="chat-wrapper" #chatContainer>
-        <div>{{currentConversationPartnerId}}</div>
         @for (message of this.conversation; track $index) {
             <div class="message-item" >
                 <div class="date">
