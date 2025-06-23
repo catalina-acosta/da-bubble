@@ -29,11 +29,11 @@ section {
   }
 }
 
-.member_form{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-top: 25px;
+.member_form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 25px;
 }
 
 .user-search {
@@ -47,6 +47,8 @@ section {
   width: 100%;
   max-height: 150px;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(171, 171, 235, 0.616) #f1f1f144;
   z-index: 10;
   margin: 0;
   padding: 0;
@@ -62,15 +64,31 @@ section {
   background-color: #f0f0f0;
 }
 
-  .user-search input {
-    width: 100%;
-    outline: none;
-    padding: 10px 10px;
-    border-radius: 50px;
-    border: 1px solid #444df2;
-  }
-button{
-   margin-top: 20px;
+.status_btn {
+  position: absolute;
+  top: 1.7rem;
+  left: 2.3rem;
+  z-index: 1;
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid rgb(255 255 255);
+  border-radius: 2rem;
+}
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-search input {
+  width: 100%;
+  outline: none;
+  padding: 10px 10px;
+  border-radius: 50px;
+  border: 1px solid #444df2;
+}
+button {
+  margin-top: 20px;
 }
 .disabled-btn {
   background-color: #444df259;
@@ -78,9 +96,9 @@ button{
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
-    padding: 10px 25px;
+  padding: 10px 25px;
   border-radius: 25px;
-   font-weight: 700;
+  font-weight: 700;
   font-size: 1rem;
   margin-left: auto;
   margin-bottom: 5px;
@@ -101,4 +119,33 @@ button{
   &:hover {
     background-color: rgba(68, 77, 242, 0.6862745098);
   }
+}
+
+.selected-users{
+  display: flex;
+  flex-direction: column;
+
+  span{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    img{
+    width: 1.5rem;
+  }
+
+  button{
+    margin-top: 0;
+    cursor: pointer;
+    color: #444df2;
+    width: 20px;
+    height: 20px;
+
+    &:hover{
+      background-color: #444df22c;
+      border-radius: 20px;
+    }
+  }
+  }
+
+  
 }
