@@ -1,5 +1,6 @@
 @if(showMemberDialog){
-    <app-select-member-dialog (membersSelected)="onMembersSelected($event)">
+    <app-select-member-dialog (membersSelected)="onMembersSelected($event)"
+    (dialogCancelled)="onDialogCancelled()">
     </app-select-member-dialog>
 }
 
