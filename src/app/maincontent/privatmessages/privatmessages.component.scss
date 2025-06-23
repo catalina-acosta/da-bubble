@@ -1,209 +1,210 @@
-@use '../../../styles.scss' as styles; 
+@use "../../../styles.scss" as styles;
 
 section {
-    width: 100%;
-    background-color: white;
-    border-radius: 24px;
-    display: flex;
-    flex-direction: column;
-    height: 85vh;
-    padding: 2rem;
-    margin: 0.8rem;
-    justify-content: space-between;
+  width: 100%;
+  background-color: white;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  padding: 2rem;
+  margin: 0.8rem;
+  justify-content: space-between;
 }
 
 .channel-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #80808014;
-    margin-bottom: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #80808014;
+  margin-bottom: 4rem;
 
-    .avatar-wrapper {
-        display: flex;
-        align-items: center;
-        .avatar {
-            width: 2rem;
-            height: 2rem;
-            border-radius: 2rem;
-            background-color: aquamarine;
-        }
+  .avatar-wrapper {
+    display: flex;
+    align-items: center;
+    .avatar {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 2rem;
+      background-color: aquamarine;
     }
+  }
 }
 
 .default-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    border-bottom: 2px solid #80808014;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 2px solid #80808014;
+  gap: 1rem;
 }
 
-.search-bar{
-    width: 100%;
-    border-radius: 1.2rem;
-    padding: 0.5rem 0.7rem;
-    border: 1px solid #ADB0D9;
-    margin-bottom: 1rem;
+.search-bar {
+  width: 100%;
+  border-radius: 1.2rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #adb0d9;
+  margin-bottom: 1rem;
 }
 
 .private-bar {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .chat-wrapper {
-    overflow-y: auto;
-    max-height: 60vh; 
-    padding-top: 1rem;
+  overflow-y: auto;
+  max-height: 60vh;
+  padding-top: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(171, 171, 235, 0.616) #f1f1f144;
 }
 
 .date {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    
-    .line {
-        height: 2px;
-        width: 100%;
-        background-color: #80808056;
-    }
-    p {
-        position: absolute;
-        background-color: white;
-        border: 1px solid #80808056;
-        border-radius: 0.88rem;
-        padding: 0 1rem;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .line {
+    height: 2px;
+    width: 100%;
+    background-color: #80808056;
+  }
+  p {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #80808056;
+    border-radius: 0.88rem;
+    padding: 0 1rem;
+  }
 }
 
 .message-wrapper {
-    display: flex;
-    position: relative;
-    margin: 3rem 0;
-    gap: 1rem;
-    &:hover {
-            background-color: styles.$lightpurple;
-        }
+  display: flex;
+  position: relative;
+  margin: 3rem 0;
+  gap: 1rem;
+  &:hover {
+    background-color: styles.$lightpurple;
+  }
 }
 
 .message-wrapper-right {
-    display: flex;
-    position: relative;
-    margin: 3rem 0;
-    gap: 1rem;
-    flex-direction: row-reverse;
-    &:hover {
-            background-color: styles.$lightpurple;
-        }
+  display: flex;
+  position: relative;
+  margin: 3rem 0;
+  gap: 1rem;
+  flex-direction: row-reverse;
+  &:hover {
+    background-color: styles.$lightpurple;
+  }
 }
 
 .avatar-large {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 2rem;
-    background-color: aquamarine;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 2rem;
+  background-color: aquamarine;
 }
 
 .message-info-wrapper {
-    .name-and-time {
-        display: flex;
-        gap: 1rem;
-    }
+  .name-and-time {
+    display: flex;
+    gap: 1rem;
+  }
 
-    .name-and-time-right {
-        display: flex;
-        gap: 1rem;
-        flex-direction: row-reverse;
-    }
+  .name-and-time-right {
+    display: flex;
+    gap: 1rem;
+    flex-direction: row-reverse;
+  }
 
-    .message {
-        background-color: styles.$lightpurple;
-        padding: 1rem;
-        border-radius: 0 1.5rem 1.5rem;
-        &:hover {
-            background-color: white;
-        }
+  .message {
+    background-color: styles.$lightpurple;
+    padding: 1rem;
+    border-radius: 0 1.5rem 1.5rem;
+    &:hover {
+      background-color: white;
     }
+  }
 
-    .message-right {
-        background-color: styles.$purple2;
-        padding: 1rem;
-        border-radius: 1.5rem 0 1.5rem 1.5rem;
-        p{
-            color: white;
-        }
+  .message-right {
+    background-color: styles.$purple2;
+    padding: 1rem;
+    border-radius: 1.5rem 0 1.5rem 1.5rem;
+    p {
+      color: white;
     }
+  }
 
-    .threads {
-        display: flex;
-        gap: 0.5rem;
-    }
+  .threads {
+    display: flex;
+    gap: 0.5rem;
+  }
 }
 
 .reaction-counter-box {
-    display: flex;
-    background-color: white;
-    border: 1px solid rgba(128, 128, 128, 0.337254902);
-    border-radius: 0.5rem;
-    padding: 0 0.5rem;
-    align-items: flex-end;
+  display: flex;
+  background-color: white;
+  border: 1px solid rgba(128, 128, 128, 0.337254902);
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
+  align-items: flex-end;
 }
 
 .message-reactions-threads-wrapper {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    p {
-        font-size: 14px;
-    }
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  p {
+    font-size: 14px;
+  }
 }
 
 .reactions-wrapper {
-    display: flex;
-    gap: 0.3rem;
+  display: flex;
+  gap: 0.3rem;
 }
 
-
 .reaction-menu {
-    position: absolute;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 1rem;
-    padding: 0.5rem 1rem;
-    display: flex;
-    gap: 0.5rem;
-    z-index: 10;
-    top: -2.5rem; // adjust as needed
-    right: 1rem;  // adjust as needed
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+  top: -2.5rem; // adjust as needed
+  right: 1rem; // adjust as needed
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 form {
-    textarea {
-        height: 10rem;
-        width: 100%;
-        border-radius: 1.2rem;
-        padding: 1.2rem;
-        border: 1px solid styles.$midpurple;
-    }
+  textarea {
+    height: 10rem;
+    width: 100%;
+    border-radius: 1.2rem;
+    padding: 1.2rem;
+    border: 1px solid styles.$midpurple;
+  }
 
-    .buttons-wrapper {
-        position: absolute;
-        padding: 1.2rem;
-        bottom: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
+  .buttons-wrapper {
+    position: absolute;
+    padding: 1.2rem;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .left-btns {
+    display: flex;
+    gap: 1rem;
+    img {
+      width: 1.2rem;
+      cursor: pointer;
     }
-    .left-btns {
-        display: flex;
-        gap: 1rem;
-        img {
-            width: 1.2rem;
-            cursor: pointer;
-        }
-    }
+  }
 }

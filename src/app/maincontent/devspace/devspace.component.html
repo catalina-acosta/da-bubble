@@ -156,6 +156,7 @@
       <span>{{ channels.channelName }}</span>
     </div>
     }
+
     <div class="add_channel_btn d_flex" (click)="openChannelDialog()">
       <svg
         width="24"
@@ -244,7 +245,7 @@
     <p>Direktnachricht</p>
   </div>
 
-  <div class="channels_content" [class.hidden]="!isAvatarContentVisible">
+  <div class="channels_content box_height_wrapper" [class.hidden]="!isAvatarContentVisible">
     <div class="groups_btn d_flex">
       <ul>
         @for(person of firebase.allUsersList; track $index){
