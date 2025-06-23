@@ -154,6 +154,13 @@ ul {
   transform: rotate(-90deg);
 }
 
+.box_height_wrapper{
+  height: 47vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(171, 171, 235, 0.616) #f1f1f144;
+}
+
 // open Channel dialog
 
 .overlay {

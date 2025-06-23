@@ -128,7 +128,6 @@ export class FirebaseService {
         });
       });
   
-      // Gib die Liste der Benutzer zurück
       return this.allUsersList;
       
     } catch (error) {
