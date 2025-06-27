@@ -33,7 +33,6 @@ export class PrivatmessagesComponent implements AfterViewInit {
     time: 0,
     formattedTime: "",
     reactions: [
-      { emoji: '', counter: 0 }
     ]
   };
   showReactionMenu: number | null = null;
@@ -138,11 +137,11 @@ ngOnChanges(changes: SimpleChanges) {
     // Find if this emoji already exists
     const reaction = message.reactions.find(r => r.emoji === emoji);
     if (reaction) {
-      reaction.counter++;
-      console.log(message.reactions);
-      console.log(message.text);
-      
-      
+      if(reaction.counter) {
+        reaction.counter++;
+        console.log(message.reactions);
+        console.log(message.text);
+      }
     } else {
       message.reactions.push({ emoji, counter: 1 });
       console.log(message.reactions);

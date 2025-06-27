@@ -56,14 +56,14 @@
                                         <p>letze Antwort 14:50</p>
                                     </div>
                                     <div class="reactions-wrapper">
-                                        @if(message.reactions.length > 1) {
-                                            @for (reaction of message.reactions; track $index) {
+                                        @for (reaction of message.reactions; track $index) {
+                                            @if (reaction) {
                                                 <div class="reaction-counter-box">
                                                     <p>{{reaction.counter}}</p>
                                                     <p>{{reaction.emoji}}</p>
                                                 </div>
-                                                }
                                             }
+                                        }
                                     </div>
                                 </div>
                             </div>
