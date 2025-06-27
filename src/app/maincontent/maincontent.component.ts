@@ -14,9 +14,15 @@ import { MenuBtnComponent } from '../shared/component/menu-btn/menu-btn.componen
 export class MaincontentComponent {
   isDevspaceVisible:boolean =true;
   selectedPartnerId: string =''; 
+  selectedChannelId: string ='';
   
   toggleDevspace(){
     this.isDevspaceVisible = !this.isDevspaceVisible;
   }
+
+  setChannel(id: string) {
+  console.log('Selected channel id:', id);
+  this.selectedChannelId = id;
+}
 
 }

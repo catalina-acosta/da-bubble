@@ -1,18 +1,22 @@
 <section>
-    @if(currentChannel != '') {
+    @if(currentChannelId != '') {
         <div class="channel-bar">
-            <div class="dropdown-channel">
-                <p>#channel name</p>
-            </div>
-            <div class="avatar-wrapper">
-                <div class="avatar"></div>
-                <div class="avatar"></div>
-                <div class="avatar"></div>
-                <div class="avatar add-icon"></div>
-                <p>+3</p>
-            </div>
+            @for (channel of firebase.allChannels; track $index) {
+                @if (currentChannelId === channel.id) {
+                    <div class="dropdown-channel">
+                        <p>{{channel.channelName}}</p>
+                    </div>
+                    <div class="avatar-wrapper">
+                        <div class="avatar"></div>
+                        <div class="avatar"></div>
+                        <div class="avatar"></div>
+                        <div class="avatar add-icon"></div>
+                        <p>+3</p>
+                    </div>
+                }
+            }
         </div>
-    } @else if (currentChannel == '' && !currentConversationPartnerId) {
+    } @else if (currentChannelId == '' && !currentConversationPartnerId) {
         <div class="default-bar">
             <h2>Neue Nachricht</h2>
             <input class="search-bar" type="text" placeholder="An: #channel, oder @jemand oder E-Mail Adresse">

@@ -16,8 +16,8 @@ export class PrivatmessagesComponent implements AfterViewInit {
   firebase = inject(FirebaseService);
   currentUserId: string = '74izbWVB9XFaPrkOl2IW';
   @Input() currentConversationPartnerId: string = '';
+  @Input() currentChannelId: string = '';
   currentCPAvatar: string = "";
-  currentChannel: string = '';
   currentUserName: string = 'Felix';
   currentUserAvatar: string = "";
   inputMessageText: string = '';
@@ -48,10 +48,14 @@ export class PrivatmessagesComponent implements AfterViewInit {
     
   }
 
-ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges) {
     if (changes['currentConversationPartnerId'] && !changes['currentConversationPartnerId'].firstChange) {
       this.filterMessages();
       setTimeout(() => this.scrollToBottom(), 0);
+    }
+
+    if (changes['currentConversationPartnerId']) {
+      console.log('currentConversationPartnerId changed:', this.currentConversationPartnerId);
     }
   }
 
@@ -100,7 +104,7 @@ ngOnChanges(changes: SimpleChanges) {
     this.newMessage.formattedTime = `${hours}:${minutes}`;
     this.newMessage.senderId = this.currentUserId;
     this.newMessage.receiverId = this.currentConversationPartnerId;
-    this.newMessage.channelId = this.currentChannel;
+    this.newMessage.channelId = this.currentChannelId;
     this.newMessage.text = this.inputMessageText;
     this.formSubmitted = true;
 

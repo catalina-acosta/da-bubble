@@ -202,7 +202,8 @@ async updateUserName(userId: string, fullname: string): Promise<void> {
         channelName: data.channelName,
         description: data.description,
         userCreators: data.userCreators,
-        members: data.members || []
+        members: data.members || [],
+        messages: data.messages
       });
     });
   });
