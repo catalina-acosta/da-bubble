@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { FirebaseService } from '../../shared/services/firebase.service';
 import { user } from '@angular/fire/auth';
 import { SelectMemberDialogComponent } from '../select-member-dialog/select-member-dialog.component';
+import { MessageInterface } from '../../shared/message.interface';
+import { UserInterface } from '../../shared/user.interface';
 
 @Component({
   selector: 'app-add-channeldialog',
@@ -12,53 +14,74 @@ import { SelectMemberDialogComponent } from '../select-member-dialog/select-memb
   templateUrl: './add-channeldialog.component.html',
   styleUrl: './add-channeldialog.component.scss'
 })
-export class AddChanneldialogComponent {
-@Output() close= new EventEmitter<void>();
-firebase = inject(FirebaseService);
-showForm = true;
-showMemberDialog = false;
 
-channelCreation = {
-  channelName: "",
-  description: "",
-  userCreators: "",
-  members: [] as string[] 
-}
 
-onInitialSubmit(ngform: NgForm) {
-  if (ngform.valid) {
-    this.showForm = false;
-    this.showMemberDialog = true;
+export class AddChanneldialogComponent implements OnInit {
+  @Output() close = new EventEmitter<void>();
+  firebase = inject(FirebaseService);
+  showForm = true;
+  showMemberDialog = false;
+
+  loggedInUser: UserInterface | null = null; // <-- für Anzeige optional
+
+  channelCreation = {
+    channelName: "",
+    description: "",
+    userCreators: "",
+    members: [] as string[],
+    messages: [] as MessageInterface[]
+  }
+
+async ngOnInit() {
+  const users = await this.firebase.getUserList();
+  if (users.length > 0) {
+    this.firebase.setCurrentUser(users[0]);
   }
 }
 
-onMembersSelected(members: string[]) {
-  this.channelCreation.members = members;
-  this.createChannelAfterMembers(); // Danach wirklich erstellen
-}
+  onInitialSubmit(ngform: NgForm) {
+    if (ngform.valid) {
+      this.showForm = false;
+      this.showMemberDialog = true;
+    }
+  }
+
+  onMembersSelected(members: string[]) {
+    this.channelCreation.members = members;
+    this.createChannelAfterMembers();
+  }
+
+isCreatingChannel = false;
 
 async createChannelAfterMembers() {
+  if (this.isCreatingChannel) return;  // Doppelte Aufrufe verhindern
+  this.isCreatingChannel = true;
+
   const currentUser = this.firebase.getCurrentUser();
-  if (currentUser) {
+  if (currentUser && currentUser.id) {
     this.channelCreation.userCreators = currentUser.id;
   }
 
   try {
-    await this.firebase.addChannelToData(this.channelCreation); 
+    await this.firebase.addChannelToData(this.channelCreation);
     this.closeDialog();
   } catch (error) {
     console.error("Fehler beim Erstellen des Channels:", error);
+  } finally {
+    this.isCreatingChannel = false;  // Button wieder aktivieren, falls Fehler auftrat
   }
 }
-onDialogCancelled() {
-  this.closeDialog();
-}
 
+
+  onDialogCancelled() {
+    this.closeDialog();
+  }
 
   closeDialog() {
     this.showForm = false;
     this.showMemberDialog = false;
   }
+
 
 // async createChannel(ngform: NgForm){
 //   if(ngform.valid && ngform.submitted){
