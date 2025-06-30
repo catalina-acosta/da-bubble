@@ -97,16 +97,17 @@
         [placeholder]="'Dein Text hier'"
       />
 
-      <button
-        type="submit"
-        [disabled]="!channelForm.valid"
-        [ngClass]="{
-          'enabled-btn': channelForm.valid,
-          'disabled-btn': !channelForm.valid
-        }"
-      >
-        Erstellen
-      </button>
+<button
+  type="submit"
+  [disabled]="!channelForm.valid || isCreatingChannel"
+  [ngClass]="{
+    'enabled-btn': channelForm.valid && !isCreatingChannel,
+    'disabled-btn': !channelForm.valid || isCreatingChannel
+  }"
+>
+  Erstellen
+</button>
+
     </form>
   </div>
 </section>

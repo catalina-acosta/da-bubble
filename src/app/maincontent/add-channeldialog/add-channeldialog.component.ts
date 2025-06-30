@@ -31,13 +31,13 @@ export class AddChanneldialogComponent implements OnInit {
     members: [] as string[],
     messages: [] as MessageInterface[]
   }
+
 async ngOnInit() {
   const users = await this.firebase.getUserList();
   if (users.length > 0) {
     this.firebase.setCurrentUser(users[0]);
   }
 }
-
 
   onInitialSubmit(ngform: NgForm) {
     if (ngform.valid) {
@@ -51,15 +51,15 @@ async ngOnInit() {
     this.createChannelAfterMembers();
   }
 
-async createChannelAfterMembers() {
-  const currentUser = this.firebase.getCurrentUser();
-  console.log('currentUser:', currentUser);
+isCreatingChannel = false;
 
+async createChannelAfterMembers() {
+  if (this.isCreatingChannel) return;  // Doppelte Aufrufe verhindern
+  this.isCreatingChannel = true;
+
+  const currentUser = this.firebase.getCurrentUser();
   if (currentUser && currentUser.id) {
     this.channelCreation.userCreators = currentUser.id;
-    console.log('Set userCreators:', this.channelCreation.userCreators);
-  } else {
-    console.warn('Kein gültiger currentUser oder keine id vorhanden!');
   }
 
   try {
@@ -67,8 +67,11 @@ async createChannelAfterMembers() {
     this.closeDialog();
   } catch (error) {
     console.error("Fehler beim Erstellen des Channels:", error);
+  } finally {
+    this.isCreatingChannel = false;  // Button wieder aktivieren, falls Fehler auftrat
   }
 }
+
 
   onDialogCancelled() {
     this.closeDialog();
