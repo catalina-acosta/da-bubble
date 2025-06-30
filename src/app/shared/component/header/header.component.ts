@@ -44,6 +44,7 @@ export class HeaderComponent {
   if (this.currentUser) {
     await this.firebase.updateUserStatus(this.currentUser.id, true);
      this.firebase.setCurrentUser(this.currentUser); 
+     console.log("SET CURRENT USER: ", this.currentUser);
     this.currentUser.status = true;
   }
 }
