@@ -4,9 +4,9 @@
     <div class="main-content-center">
     <app-menu-btn [isDevspaceOpen]="isDevspaceVisible" (toggle)="toggleDevspace()" ></app-menu-btn>
     @if(isDevspaceVisible){
-        <app-devspace [class.hidden]="!isDevspaceVisible" (conversationPartnerId)="selectedPartnerId = $event"></app-devspace>
+        <app-devspace [class.hidden]="!isDevspaceVisible" (conversationPartnerId)="selectedPartnerId = $event" (channelId)="selectedChannelId = $event"></app-devspace>
     }
-    <app-privatmessages [currentConversationPartnerId]="selectedPartnerId"></app-privatmessages>
+    <app-privatmessages [currentConversationPartnerId]="selectedPartnerId" [currentChannelId]="selectedChannelId"></app-privatmessages>
     <app-thread></app-thread>
     </div>
 </section>

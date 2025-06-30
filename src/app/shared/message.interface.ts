@@ -7,11 +7,9 @@ export interface MessageInterface {
     date: string;
     time: number;
     formattedTime: string;
-    reactions: [
-        {
-            emoji: string;
-            counter: number;
-        }
-    ]
+    reactions: {
+        emoji: string;
+        counter: number;
+    }[];
 
 }

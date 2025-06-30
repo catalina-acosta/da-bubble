@@ -18,6 +18,7 @@ export class DevspaceComponent implements OnInit{
   isClicked:boolean = false;
   channels: ChannelInterface[] =[];
   @Output() conversationPartnerId = new EventEmitter<string>();
+  @Output() channelId = new EventEmitter<string>();
 
   ngOnInit(): void {
     this.firebase.getChannels();
@@ -39,5 +40,10 @@ export class DevspaceComponent implements OnInit{
 
   openPrivateConversation(id: string) {
     this.conversationPartnerId.emit(id);
+  }
+
+  openChannelConversation(id: string) {
+    this.channelId.emit(id);
+    console.log("emitting channelId:", id);
   }
 }

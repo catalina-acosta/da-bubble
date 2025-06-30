@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { users, messages } from './dummyData'
+import { users, messages, channels } from './dummyData'
 import { addDoc, collection, doc, Firestore, getDocs, setDoc, updateDoc, onSnapshot } from '@angular/fire/firestore';
 import { UserInterface } from '../user.interface';
 import { MessageInterface } from '../message.interface';
@@ -11,6 +11,7 @@ import { ChannelInterface } from '../channels.interface';
 export class FirebaseService {
   dummyDataUsers = users;
   dummyDataMesssages = messages;
+  dummyDataChannels = channels;
   firebase = inject(Firestore);
   allUsers: UserInterface[] = []; 
   allMessages: MessageInterface[] = [];
@@ -22,12 +23,13 @@ export class FirebaseService {
     // this.initializeUsers();
     // console.log("initializing users");
     // this.initializeMessages();
+    // this.initializeChannels();
     this.getMessages();
     this.getUserList();
     this.getChannels();
   }
 
-    // #region vorlage 
+  //#region vorlage Users
     async initializeUsers() {
       try {
         const usersRef = collection(this.firebase, "users");
@@ -71,6 +73,22 @@ export class FirebaseService {
     }
   //#endregion
 
+  //#region initialize channels
+  async initializeChannels() {
+    try {
+      const channelsRef = collection(this.firebase, "channels");
+      for (const element of this.dummyDataChannels) {
+        const { id, ...dataWithoutId } = element; // Remove id from data
+        const channelDocRef = doc(channelsRef, element.id); // Use existing id
+        await setDoc(channelDocRef, dataWithoutId); // Overwrite or create with same id
+      }
+      console.log('Channels initialized successfully');
+    } catch (error) {
+      console.error('Error initializing channels:', error);
+    }
+  }
+  //#endregion
+  
   setCurrentUser(user: UserInterface) {
     this.currentUser = user;
   }
@@ -184,7 +202,8 @@ async updateUserName(userId: string, fullname: string): Promise<void> {
         channelName: data.channelName,
         description: data.description,
         userCreators: data.userCreators,
-        members: data.members || []
+        members: data.members || [],
+        messages: data.messages
       });
     });
   });
