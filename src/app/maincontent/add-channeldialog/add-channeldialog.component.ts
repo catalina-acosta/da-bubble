@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { FirebaseService } from '../../shared/services/firebase.service';
 import { user } from '@angular/fire/auth';
 import { SelectMemberDialogComponent } from '../select-member-dialog/select-member-dialog.component';
+import { MessageInterface } from '../../shared/message.interface';
 
 @Component({
   selector: 'app-add-channeldialog',
@@ -22,7 +23,8 @@ channelCreation = {
   channelName: "",
   description: "",
   userCreators: "",
-  members: [] as string[] 
+  members: [] as string[],
+   messages:[] as MessageInterface[]
 }
 
 onInitialSubmit(ngform: NgForm) {
