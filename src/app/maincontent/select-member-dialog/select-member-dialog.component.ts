@@ -14,6 +14,7 @@ import { ChannelInterface } from '../../shared/channels.interface';
 })
 export class SelectMemberDialogComponent {
   @Output() membersSelected = new EventEmitter<string[]>();
+  @Output() dialogCancelled = new EventEmitter<void>();
 
   firebase = inject(FirebaseService);
 
@@ -123,14 +124,7 @@ export class SelectMemberDialogComponent {
     return this.selectAllMembers || this.selectedUsers.length > 0;
   }
 
-  // submit() {
-  //   const selectedIds = this.selectAllMembers
-  //     ? this.allUsers.map((u) => u.id)
-  //     : this.selectedUsers.map((u) => u.id);
-  //   this.membersSelected.emit(selectedIds);
-  // }
-
-  closeDialog() {
-    this.membersSelected.emit([]);
-  }
+closeDialog() {
+  this.dialogCancelled.emit();
+}
 }

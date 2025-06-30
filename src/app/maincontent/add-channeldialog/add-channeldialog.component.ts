@@ -25,10 +25,6 @@ channelCreation = {
   members: [] as string[] 
 }
 
-// closeDialog(){
-//   this.close.emit();
-// }
-
 onInitialSubmit(ngform: NgForm) {
   if (ngform.valid) {
     this.showForm = false;
@@ -54,6 +50,10 @@ async createChannelAfterMembers() {
     console.error("Fehler beim Erstellen des Channels:", error);
   }
 }
+onDialogCancelled() {
+  this.closeDialog();
+}
+
 
   closeDialog() {
     this.showForm = false;
