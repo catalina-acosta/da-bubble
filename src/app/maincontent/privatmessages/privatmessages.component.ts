@@ -4,10 +4,11 @@ import { MessageInterface } from '../../shared/message.interface';
 import { NgForm, FormsModule } from '@angular/forms';
 import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MessageBarComponent } from './message-bar/message-bar.component';
 
 @Component({
   selector: 'app-privatmessages',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MessageBarComponent],
   templateUrl: './privatmessages.component.html',
   styleUrl: './privatmessages.component.scss'
 })
@@ -51,6 +52,7 @@ export class PrivatmessagesComponent implements AfterViewInit {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['currentConversationPartnerId'] && !changes['currentConversationPartnerId'].firstChange) {
       this.filterMessages();
+      this.currentChannelId = '';
       setTimeout(() => this.scrollToBottom(), 0);
     }
 

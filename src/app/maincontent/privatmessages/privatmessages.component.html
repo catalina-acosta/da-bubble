@@ -1,5 +1,9 @@
 <section>
-    @if(currentChannelId != '') {
+    <app-message-bar
+        [currentChannelId]="currentChannelId"
+        [currentConversationPartnerId]="currentConversationPartnerId">
+    </app-message-bar>
+    <!-- @if(currentChannelId != '') {
         <div class="channel-bar">
             @for (channel of firebase.allChannels; track $index) {
                 @if (currentChannelId === channel.id) {
@@ -30,7 +34,7 @@
                 }
             }
         </div> 
-    }
+    } -->
 
     <div class="chat-wrapper" #chatContainer>
         @for (message of this.conversation; track $index) {

@@ -165,7 +165,7 @@ export class FirebaseService {
   }
 }
 
-async updateUserName(userId: string, fullname: string): Promise<void> {
+  async updateUserName(userId: string, fullname: string): Promise<void> {
     try {
       const userDocRef = doc(this.firebase, 'users', userId);
       await setDoc(userDocRef, { fullname: fullname }, { merge: true });
@@ -190,23 +190,22 @@ async updateUserName(userId: string, fullname: string): Promise<void> {
     await addDoc(collection(this.firebase, "channels"), newChannel);
   }
 
- getChannels(): void { 
- const channelsRef = collection(this.firebase, "channels");
+  getChannels(): void { 
+  const channelsRef = collection(this.firebase, "channels");
 
-  onSnapshot(channelsRef, (snapshot) => {
-    this.allChannels = [];
-    snapshot.forEach(doc => {
-      const data = doc.data() as ChannelInterface;
-      this.allChannels.push({
-        id: doc.id,
-        channelName: data.channelName,
-        description: data.description,
-        userCreators: data.userCreators,
-        members: data.members || [],
-        messages: data.messages
+    onSnapshot(channelsRef, (snapshot) => {
+      this.allChannels = [];
+      snapshot.forEach(doc => {
+        const data = doc.data() as ChannelInterface;
+        this.allChannels.push({
+          id: doc.id,
+          channelName: data.channelName,
+          description: data.description,
+          userCreators: data.userCreators,
+          members: data.members || [],
+          messages: data.messages
+        });
       });
     });
-  });
-}
-
+  }
 }
