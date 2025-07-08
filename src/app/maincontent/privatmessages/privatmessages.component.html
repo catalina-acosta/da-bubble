@@ -4,74 +4,121 @@
         [currentConversationPartnerId]="currentConversationPartnerId">
     </app-message-bar>
     <div class="chat-wrapper" #chatContainer>
-        @for (message of this.conversation; track $index) {
-            <div class="message-item" >
-                <div class="date">
-                    <div class="line"></div>
-                    <p>{{message.date}}</p>
-                </div>
-                <div [ngClass]="message.senderId === currentUserId ? 'message-wrapper-right' : 'message-wrapper'"
-                    (mouseenter)="showReactionMenu = $index"
-                    (mouseleave)="showReactionMenu = null">
-
-                    @for (user of firebase.allUsersList; track $index) {
-                        @if(user.id === message.senderId ) {
-                            <img class="avatar-large" [src]="user.avatar" alt="">
-                            <div class="message-info-wrapper">
-                                <div [ngClass]="message.senderId === currentUserId ? 'name-and-time-right' : 'name-and-time'">
-                                    <p class="user-name">{{user.fullname}}</p>
-                                    <p class="time">{{message.formattedTime}}</p>
-                                </div>
-                                <div [ngClass]="message.senderId === currentUserId ? 'message-right' : 'message'">
-                                    <p>{{message.text}}</p>
-                                </div>
-                                <div class="message-reactions-threads-wrapper">
-                                    <div class="threads">
-                                        <p>zwei Antworten</p>
-                                        <p>letze Antwort 14:50</p>
-                                    </div>
-                                    <div class="reactions-wrapper">
-                                        @for (reaction of message.reactions; track $index) {
-                                            @if (reaction) {
-                                                <div class="reaction-counter-box">
-                                                    <p>{{reaction.counter}}</p>
-                                                    <p>{{reaction.emoji}}</p>
-                                                </div>
-                                            }
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        } 
-                    }
-                    @if(showReactionMenu === $index) {
-                        <div class="reaction-menu" >
-                            <span (click)="addReaction(message, '👍')">👍</span>
-                            <span (click)="addReaction(message, '✅')">✅</span>
-                            <span (click)="openEmojiMenu(message)"><img src="./assets/icon/messages/add_reaction.svg" alt=""></span>
-                            <span (click)="addThread(message)"><img src="./assets/icon/messages/comment.svg" alt=""></span>
+        @if (currentConversationPartnerId === '') {
+            <div>no messages</div>
+        }@else if (currentChannelId != ''){
+            <div>showing channel messages</div>
+            @for (channel of firebase.allChannels; track $index) {
+                @if (currentChannelId === channel.id) {
+                    @for (message of channel.messages; track $index) {
+                        <div class="message-item" >
+                        <div class="date">
+                            <div class="line"></div>
+                            <p>{{message.date}}</p>
                         </div>
+                        <div [ngClass]="message.senderId === currentUserId ? 'message-wrapper-right' : 'message-wrapper'"
+                            (mouseenter)="showReactionMenu = $index"
+                            (mouseleave)="showReactionMenu = null">
+        
+                            @for (user of firebase.allUsersList; track $index) {
+                                @if(user.id === message.senderId ) {
+                                    <img class="avatar-large" [src]="user.avatar" alt="">
+                                    <div class="message-info-wrapper">
+                                        <div [ngClass]="message.senderId === currentUserId ? 'name-and-time-right' : 'name-and-time'">
+                                            <p class="user-name">{{user.fullname}}</p>
+                                            <p class="time">{{message.formattedTime}}</p>
+                                        </div>
+                                        <div [ngClass]="message.senderId === currentUserId ? 'message-right' : 'message'">
+                                            <p>{{message.text}}</p>
+                                        </div>
+                                        <div class="message-reactions-threads-wrapper">
+                                            <div class="threads">
+                                                <p>zwei Antworten</p>
+                                                <p>letze Antwort 14:50</p>
+                                            </div>
+                                            <div class="reactions-wrapper">
+                                                @for (reaction of message.reactions; track $index) {
+                                                    @if (reaction) {
+                                                        <div class="reaction-counter-box">
+                                                            <p>{{reaction.counter}}</p>
+                                                            <p>{{reaction.emoji}}</p>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                } 
+                            }
+                            @if(showReactionMenu === $index) {
+                                <div class="reaction-menu" >
+                                    <span (click)="addReaction(message, '👍')">👍</span>
+                                    <span (click)="addReaction(message, '✅')">✅</span>
+                                    <span (click)="openEmojiMenu(message)"><img src="./assets/icon/messages/add_reaction.svg" alt=""></span>
+                                    <span (click)="addThread(message)"><img src="./assets/icon/messages/comment.svg" alt=""></span>
+                                </div>
+                                }
+                        </div>
+                    </div>
+                    }
+                }
+            }
+        } @else {
+            @for (message of this.conversation; track $index) {
+                <div class="message-item" >
+                    <div class="date">
+                        <div class="line"></div>
+                        <p>{{message.date}}</p>
+                    </div>
+                    <div [ngClass]="message.senderId === currentUserId ? 'message-wrapper-right' : 'message-wrapper'"
+                        (mouseenter)="showReactionMenu = $index"
+                        (mouseleave)="showReactionMenu = null">
+    
+                        @for (user of firebase.allUsersList; track $index) {
+                            @if(user.id === message.senderId ) {
+                                <img class="avatar-large" [src]="user.avatar" alt="">
+                                <div class="message-info-wrapper">
+                                    <div [ngClass]="message.senderId === currentUserId ? 'name-and-time-right' : 'name-and-time'">
+                                        <p class="user-name">{{user.fullname}}</p>
+                                        <p class="time">{{message.formattedTime}}</p>
+                                    </div>
+                                    <div [ngClass]="message.senderId === currentUserId ? 'message-right' : 'message'">
+                                        <p>{{message.text}}</p>
+                                    </div>
+                                    <div class="message-reactions-threads-wrapper">
+                                        <div class="threads">
+                                            <p>zwei Antworten</p>
+                                            <p>letze Antwort 14:50</p>
+                                        </div>
+                                        <div class="reactions-wrapper">
+                                            @for (reaction of message.reactions; track $index) {
+                                                @if (reaction) {
+                                                    <div class="reaction-counter-box">
+                                                        <p>{{reaction.counter}}</p>
+                                                        <p>{{reaction.emoji}}</p>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            } 
                         }
+                        @if(showReactionMenu === $index) {
+                            <div class="reaction-menu" >
+                                <span (click)="addReaction(message, '👍')">👍</span>
+                                <span (click)="addReaction(message, '✅')">✅</span>
+                                <span (click)="openEmojiMenu(message)"><img src="./assets/icon/messages/add_reaction.svg" alt=""></span>
+                                <span (click)="addThread(message)"><img src="./assets/icon/messages/comment.svg" alt=""></span>
+                            </div>
+                            }
+                    </div>
                 </div>
-            </div>
+            }
         }
     </div>
     <app-message-input
         [(inputMessageText)]="inputMessageText"
         (submitMessage)="submitForm($event)">
     </app-message-input>
-    <!-- <form #addMessage="ngForm" (ngSubmit)="submitForm(addMessage)">
-        <div class="textarea-wrapper">
-            <textarea id="inputMessageText" name="inputMessageText" placeholder="Nachricht an ..."
-                [(ngModel)]="inputMessageText">
-            </textarea>
-            <div class="buttons-wrapper">
-                <div class="left-btns">
-                    <img (click)="openEmoji()" src="./assets/icon/messages/sentiment_satisfied.svg" alt="">
-                    <img (click)="openContacts()"src="./assets/icon/messages/alternate_email.svg" alt="">
-                </div>
-                <button type="submit"><img src="./assets/icon/messages/send.svg" alt=""></button>
-            </div>
-        </div>
-    </form> -->
 </section>

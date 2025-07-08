@@ -155,6 +155,12 @@ export class FirebaseService {
     }
   }
 
+  async getChannelMessages(channelId: string): Promise<MessageInterface[]> {
+    const messagesRef = collection(this.firebase, "channels", channelId, "messages");
+    const querySnapshot = await getDocs(messagesRef);
+    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as MessageInterface));
+  }
+
   async updateUserStatus(userId: string, status: boolean): Promise<void> {
   try {
     const userDocRef = doc(this.firebase, 'users', userId);
@@ -177,6 +183,11 @@ export class FirebaseService {
   
   async addMessageToData(newMessage: MessageInterface) {
     await addDoc(collection(this.firebase, "messages"), newMessage);
+  }
+
+  async addMessageToChannelData(newMessage: MessageInterface, channelId: string) {
+    const messagesRef = collection(this.firebase, "channels", channelId, "messages");
+    await addDoc(messagesRef, newMessage);
   }
 
   async updateMessageReactions(id: string, data: MessageInterface ) {

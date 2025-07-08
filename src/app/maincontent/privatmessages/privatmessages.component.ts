@@ -26,6 +26,7 @@ export class PrivatmessagesComponent implements AfterViewInit {
   formSubmitted: boolean = false;
   newMessageAdded: boolean = false;
   conversation: MessageInterface[] = [];
+  channelConversation: MessageInterface[] = [];
   newMessage: MessageInterface = {
     senderId: "",
     receiverId: "",
@@ -98,7 +99,6 @@ export class PrivatmessagesComponent implements AfterViewInit {
 
   //#region save new message - display instantly - clear form
   async submitForm(ngform: NgForm) {
-    console.log("form is submitted");
     const now = new Date();
     this.newMessage.date = now.toISOString().split('T')[0];
     this.newMessage.time = now.getTime();
@@ -112,10 +112,19 @@ export class PrivatmessagesComponent implements AfterViewInit {
     this.formSubmitted = true;
 
     if (ngform.valid) {
-      console.log("form is valid");
-      await this.firebase.addMessageToData(this.newMessage); // Wait for message to be added
-      await this.firebase.getMessages();                     // Wait for messages to be fetched
-      this.filterMessages();                                 // Update the conversation array
+      if (this.currentChannelId != '') {
+        console.log("message recieved in channel ", this.currentChannelId);
+        
+        await this.firebase.addMessageToChannelData(this.newMessage, this.currentChannelId); // Wait for message to be added
+        console.log("message saved to data");
+        await this.firebase.getChannelMessages(this.currentChannelId);
+        console.log("message displayed");
+        
+      } else {
+        await this.firebase.addMessageToData(this.newMessage); // Wait for message to be added
+        await this.firebase.getMessages();                     // Wait for messages to be fetched
+        this.filterMessages();                                 // Update the conversation array
+      }
       this.newMessageAdded = true;
       this.clearFormular(ngform);
       setTimeout(() => this.scrollToBottom(), 0);
@@ -131,14 +140,6 @@ export class PrivatmessagesComponent implements AfterViewInit {
     this.newMessageAdded = false;
   }
   //#endregion
-
-  // openEmoji() {
-  //   console.log("open emojis");
-  // }
-
-  // openContacts() {
-  //   console.log("opening contacts");
-  // }
 
   addReaction(message: MessageInterface, emoji: string) {
     // Find if this emoji already exists
