@@ -1,0 +1,14 @@
+<form #addMessage="ngForm" (ngSubmit)="onSubmit(addMessage)">
+        <div class="textarea-wrapper">
+            <textarea id="inputMessageText" name="inputMessageText" placeholder="Nachricht an ..."
+                [(ngModel)]="inputMessageText" (ngModelChange)="inputMessageTextChange.emit($event)">
+            </textarea>
+            <div class="buttons-wrapper">
+                <div class="left-btns">
+                    <img (click)="openEmoji()" src="./assets/icon/messages/sentiment_satisfied.svg" alt="">
+                    <img (click)="openContacts()"src="./assets/icon/messages/alternate_email.svg" alt="">
+                </div>
+                <button type="submit"><img src="./assets/icon/messages/send.svg" alt=""></button>
+            </div>
+        </div>
+    </form>

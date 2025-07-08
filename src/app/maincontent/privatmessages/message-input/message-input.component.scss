@@ -1,0 +1,27 @@
+@use "../../../../styles.scss" as styles;
+form {
+    textarea {
+    height: 10rem;
+    width: 100%;
+    border-radius: 1.2rem;
+    padding: 1.2rem;
+    border: 1px solid styles.$midpurple;
+    }
+
+    .buttons-wrapper {
+        position: absolute;
+        padding: 1.2rem;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .left-btns {
+        display: flex;
+        gap: 1rem;
+        img {
+            width: 1.2rem;
+            cursor: pointer;
+        }
+    }
+}

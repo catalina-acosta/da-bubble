@@ -5,10 +5,11 @@ import { NgForm, FormsModule } from '@angular/forms';
 import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MessageBarComponent } from './message-bar/message-bar.component';
+import { MessageInputComponent } from './message-input/message-input.component';
 
 @Component({
   selector: 'app-privatmessages',
-  imports: [FormsModule, CommonModule, MessageBarComponent],
+  imports: [FormsModule, CommonModule, MessageBarComponent, MessageInputComponent],
   templateUrl: './privatmessages.component.html',
   styleUrl: './privatmessages.component.scss'
 })
@@ -131,13 +132,13 @@ export class PrivatmessagesComponent implements AfterViewInit {
   }
   //#endregion
 
-  openEmoji() {
-    console.log("open emojis");
-  }
+  // openEmoji() {
+  //   console.log("open emojis");
+  // }
 
-  openContacts() {
-    console.log("opening contacts");
-  }
+  // openContacts() {
+  //   console.log("opening contacts");
+  // }
 
   addReaction(message: MessageInterface, emoji: string) {
     // Find if this emoji already exists
